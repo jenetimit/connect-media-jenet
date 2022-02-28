@@ -1,0 +1,167 @@
+/* about- section - start */
+
+@import './main.scss';
+
+// video portion
+
+.second_section{
+    background-color: #fff;
+    margin-top: 20vh;
+}
+
+
+.whoweare
+{
+    position: absolute;
+    // writing-mode: vertical-rl;
+    // text-orientation: mixed;
+    // transform: matrix(-1, 0, 0, -1, 0, 0);
+    font-size: 3rem;
+    // margin-left: 22rem;
+    color: #fff;
+    font-weight: 500;
+    height: 400px;
+    text-align: inherit;
+    margin-top: -30rem;
+    
+}
+
+.descri_1
+{
+    color: $primary_color;
+    font-size: 25px;
+    // width: 550px;
+    line-height: 50px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right:20px ;
+}
+
+
+
+
+.whatwedo
+{
+    position: absolute;
+    // writing-mode: vertical-rl;
+    // text-orientation: mixed;
+    // transform: matrix(1, 0, 0, 1, 0, 0);
+    color: $primary_color;
+    margin-top: -53rem;
+    // margin-left: -2rem;
+    height: 400px;
+    font-size: 3rem;
+    font-weight: 500;  
+}
+
+
+
+/* about- section - end */
+
+
+
+/* pillar section - start */
+
+
+.pillarSection
+{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    // margin-top: 10rem;
+    // mix-blend-mode:luminosity;
+}
+
+.about-pillar
+{
+    // font-family: inherit;
+    font-size: 5rem;
+    color: $primary_color;
+    margin-top: -10rem;
+}
+
+#pillarIcon
+{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: $primary_color;
+    font-size: 3rem;
+    margin-top: -2rem;
+    margin-left: -14px;
+    position: relative;
+}
+
+.about-pillar
+        {
+            margin-top: 16rem;
+        }
+/* pillar section - end  */
+
+@media only screen and (min-width: 601px) {
+    /* For mobile phones: */
+        .whoweare
+        {
+            position: absolute;
+        /* writing-mode: vertical-rl; */
+        /* text-orientation: mixed; */
+        /* transform: matrix(-1, 0, 0, -1, 0, 0); */
+        font-size: 3rem;
+        /* margin-left: 22rem; */
+        font-weight: 500;
+        height: 400px;
+        text-align: inherit;
+        margin-top: -30rem;
+        }
+
+
+        .about-pillar
+        {
+            margin-top: 16rem;
+        }
+
+  }
+
+
+  @media only screen and (min-width: 768px) {
+    .whoweare
+    {
+          writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: matrix(-1, 0, 0, -1, 0, 0);
+        margin-left: 30rem;
+    
+    }
+
+    .descri_1
+    {
+        margin-left: 80px;
+    }
+
+    .desc2
+    {
+        text-align: end;
+        margin-left: 0rem;
+        margin-right: 6rem;
+    }
+
+    .whatwedo
+    {
+
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: matrix(1, 0, 0, 1, 0, 0);
+        margin-left: -2rem;
+        margin-top: -21rem;
+    }
+
+
+    .about-pillar
+        {
+            margin-top: 5rem;
+        }
+
+  } 
