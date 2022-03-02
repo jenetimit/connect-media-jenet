@@ -5,7 +5,6 @@ import { FiArrowRight } from "react-icons/fi"
 import { FiArrowLeft } from "react-icons/fi"
 import { FaQuestion } from "react-icons/fa"
 import '../../style/features.scss'
-import { FaArrowDown } from "react-icons/fa"
 import  Parallax from 'react-rellax';
 // import bg from '../../assets/images/Group 148.png'
 
@@ -19,13 +18,7 @@ export default function features() {
             <Row>
                 <Col sm={6} md={6} xl={6} xxl={6}>
                     <Parallax speed={-2}>
-                    <div className='pillar_heaading'>
-                        <p className='about-pillar'>Pillars</p>
-                        <FaArrowDown id='pillarIcon'/>
-                    </div>
-
                         <div className='div1'>
-                
                             <img src={require('../../assets/images/Rectangle 37.png')} alt='header section' width={350} height={350}/>
                             <p id='vision'>Our Vision</p>
                         

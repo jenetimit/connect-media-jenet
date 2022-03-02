@@ -36,7 +36,7 @@ export default function index() {
         "Youtube advertising"]
 
     return (
-        <div>
+        <div >
             <Row className='service-main-div'>
                 <Col xl={3} md={12} sm={12} xxl={3} className='text_service'>
                     <Parallax speed={-2.5}>

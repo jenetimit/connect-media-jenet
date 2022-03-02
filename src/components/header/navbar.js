@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { Container ,Row ,Col} from 'react-bootstrap'
 import '../../style/home.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,7 +8,13 @@ import { useHistory,Link} from "react-router-dom";
 import { fadeInUp } from 'react-animations'
 import { StyleSheet, css } from 'aphrodite';
 import { Dropdown } from 'react-bootstrap';
+import Sidebar from '../sidebar/sidebar';
+
 var sessionstorage = require('sessionstorage');
+
+console.log('token is',sessionstorage.getItem('token'));
+
+
 
 const styles = StyleSheet.create({
     bounce: {
@@ -19,32 +25,50 @@ const styles = StyleSheet.create({
 
 export default function Navbar() {
 
-    
-
     let history = useHistory();
 
     return (
         <>
       
             <Container className='navbar'>
-               
                     <img src={require('../../assets/images/logo.png')}  alt='header-logo-img' onClick={()=>home()}/>
-
+                    
                     <div className='center-align'>
-                        <FiUser className='menu-nav' onClick={profileInfo}  />     
-                        {/* <BsList className='menu-nav' onClick={sidebar}/> */}
-                        <Dropdown>
-                            <Dropdown.Toggle variant="Secondary" id="dropdown-basic" className='menu-btn pointer'>
-                               Menu
-                            </Dropdown.Toggle>
 
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="/orders">My Orders</Dropdown.Item>
-                                <Dropdown.Item href="/messages">Messages</Dropdown.Item>
-                                <Dropdown.Item href="/gene-enquiry">General Enquiry</Dropdown.Item>
-                                <Dropdown.Item onClick={signout}>Signout</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+            
+                    {sessionStorage.getItem('token') !== null ? (
+                            <>
+                            <FiUser className='menu-nav' onClick={profileInfo}  />     
+                            {/* <BsList className='menu-nav' onClick={sidebar}/> */}
+                                <Dropdown>
+                                <Dropdown.Toggle variant="Secondary" id="dropdown-basic" className='menu-btn pointer'>
+                                Menu
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item href="/orders">My Orders</Dropdown.Item>
+                                    <Dropdown.Item href="/messages">Messages</Dropdown.Item>
+                                    <Dropdown.Item href="/gene-enquiry">General Enquiry</Dropdown.Item>
+                                    <Dropdown.Item onClick={signout}>Signout</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                            <Sidebar />
+
+                            {/* <a href='/sidebar' style={{padding: 10,color: '#fff',backgroundColor: '#000914',borderWidth: 1,borderColor: "#000914",borderRadius: 5}}>MENUBAR</a> */}
+
+                            </>
+                    ):(
+                        <>
+                  
+
+                        <a href='/login' style={{padding: 10,color: '#fff',backgroundColor: '#000914',borderWidth: 1,borderColor: "#000914",borderRadius: 5}}>LOGIN</a>
+                       
+                        <a href='/registration' style={{padding: 10,color: '#fff',backgroundColor: '#000914',borderWidth: 1,borderColor: "#000914",borderRadius: 5}}>REGISTER</a>
+
+                        <Sidebar />
+                        </>
+                    )
+                            }
                     </div>
 
                     

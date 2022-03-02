@@ -20,6 +20,9 @@ import EachOrder from './Orders/eachOrder'
 import Relatedmsgs from './Messages/Relatedmsgs'
 import Enquiry from '../pages/Enquiry/Index'
 import '../style/main.scss'
+import Mainscreen from '../../src/pages/MainScreen/index'
+import Sidebar from '../components/sidebar/sidebar'
+
 import {
     BrowserRouter as Router,
   
@@ -36,7 +39,7 @@ export default function Index() {
             <Switch>
                 <Route exact path="/">
                     
-                    <Registration />
+                <MainScreen />
 
                 </Route>
 
@@ -128,6 +131,11 @@ export default function Index() {
                     <Enquiry/>
                 </Route>
 
+                <Route exact path='/sidebar'>
+                    <Sidebar />
+                </Route>
+                
+               
 
             </Switch>
             <Footer />

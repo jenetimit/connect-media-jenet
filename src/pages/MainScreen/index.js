@@ -7,20 +7,18 @@ import Service from '../../pages/services/index'
 import Campaign from '../../pages/campaign/index'
 import Package from '../../pages/Packages/index'
 import Contact from '../../pages/contact/contact'
-import TestAbout from '../../pages/TestAbout/index'
 
 export default function index() {
   return (
     <div>
                     <Home />
-                    {/* <TestAbout /> */}
-                     <About />
-                    <Pillars /> 
+                    <About />
+                    <Pillars />
                     <Features />
-                     <Service /> 
-                    <Campaign /> 
-                     <Package /> 
-                     <Contact /> 
+                    <Service />
+                    <Campaign />
+                    <Package />
+                    <Contact />
     </div>
   
   );

@@ -9,38 +9,48 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function index() {
     return (
-        <>  
-       <section className="ct-u-paddingBoth80 marginTopNone-mobile paddingTopNone-mobile">
-        <div className="container">
-            <div className="featured-section-container text-center-md text-center-sm text-center-xs">
-            <div className="row ct-u-paddingBoth20">
-                <div className="col-md-7">
-                    <img src={require('../../assets/images/OBJECTS.png')} />
-                </div>
-                <div className="col-md-5 ct-u-paddingTop20">
-                <div className="textpos text-right text">
-                    <h3 className="ct-section_header ct-section_header--type2">
-                    <span>Connecting </span>
-                    <span>your</span><br></br>
-                    <span>Church</span><br></br>
-                    <span>to </span>
-                    <span>the </span>
-                    <span>World </span>
-                    {/* <span>Church</span> */}
-                    </h3>
-                    <h3 className="bebas ct-u-size40 tags">Illustration, Spaceship, gray tones</h3>
+        <>
+   
+           
+            <Container className='page margin-25vh' >
+                {/* margin-25vh */}
+                    <Parallax speed={0}>
+              
+                        <h4 className='header-title'>Connecting your </h4> <br></br> <h4 className='header-title font-mono'> church </h4> <br></br>
+                        <h4 className='header-title'>to the world</h4>
+                    </Parallax>
+                
+            </Container>
+            
 
-                    <div className="ct-u-size17 inline-block text-left">
+           
+            <Container className='headerSection' style={{marginTop:'-40rem'}}>
 
-                    </div>
-                    <div className="clearfix"></div>
-                </div>
-                </div>
-            </div>
+                <Row sm={12} md={12} xl={12} xxl={12}>
+                    <Parallax speed={5}>
+                        <img src={require('../../assets/images/Group 148.png')} alt='header section' width='100%' height='100%' style={{marginTop:'15rem'}}/>
+                   </Parallax>
+                </Row>
+                
+                
+                    <Row sm={4} xl={4} md={4}>
+                        <Parallax speed={-1}>
+                                <h5 className='header-aboutus'>About Us</h5> 
+                        </Parallax>
+                    </Row>
 
-            </div>
-        </div>
-    </section>
+
+                    <Row sm={4} xl={2} xxl={4}>
+                        <Parallax speed={-1}>
+                                <FaArrowDown className='aboutIcon'/>
+                        </Parallax>
+                    </Row>
+                
+
+            </Container>
+       
+
+        
         </>
       
     )

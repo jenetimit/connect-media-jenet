@@ -86,7 +86,7 @@ export default function Index() {
 
                 <Col></Col>
 
-                <Col xl={8} sm={12} md={12} xxl={5} className='py-5 my-5'>
+                <Col xl={4} sm={12} md={12} xxl={5} className='py-5 my-5'>
                   
                   <Parallax speed={-3}>
                     <h6 className='heading'>Login</h6>

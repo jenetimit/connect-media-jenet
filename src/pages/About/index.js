@@ -5,20 +5,13 @@ import  Parallax from 'react-rellax';
 
 export default function index() {
     return (
-        <>
-       
-        <div className='about_back'>
-
-
-
-       
-        <Container className='about_section_cnt'>
-            <Container className=''>
+        <div style={{marginTop:'15rem'}}>
+            <Container >
                 <Row className='center-align'>
                 
                     <Col sm={12} md={12} xl={5} xxl={5} >
                         <Parallax speed={-2}>
-                            <img src={require('../../assets/images/Group 1.png')} alt='who we are'  width='100%'/>
+                            <img src={require('../../assets/images/Group 1.png')} alt='who we are' height={400} width='100%'/>
                        
 
                        
@@ -38,11 +31,11 @@ export default function index() {
 
             </Container>
 
-            {/* <div className='back-img'> */}
-            <Container  >
-            
 
-                <Row >
+
+            <Container >
+
+                <Row>
 
                     <Col sm={12} md={12} xl={7} xxl={7}>
                         <Parallax speed={-2}>
@@ -52,15 +45,18 @@ export default function index() {
 
                     <Col sm={12} md={12} xl={5} xxl={5}>
                         <Parallax speed={-2}>
-                            <img src={require('../../assets/images/Group 2.png')} alt='who we are' width='100%'/>
+                            <img src={require('../../assets/images/Group 2.png')} alt='who we are' height={400} width='100%'/>
                             <p className="whatwedo" >what we do</p>
                         </Parallax>
                     </Col>
-                </Row>
-            </Container>
-            </Container>
-            </div>
 
-        </>
+                </Row>
+
+            </Container>
+
+
+
+            
+        </div>
     )
 }
