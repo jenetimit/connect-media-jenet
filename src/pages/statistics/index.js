@@ -3,8 +3,6 @@ import '../../style/statistics.scss'
 import '../../style/animate.css'
 import $ from "jquery";
 
-// var VanillaTilt = require('../../vanila-tilt')
-
 export default function Index() {
 
     useEffect(()=>{
