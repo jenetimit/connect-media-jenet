@@ -5,18 +5,6 @@ import $ from "jquery";
 
 export default function Index() {
 
-    useEffect(()=>{
-        $(window).on("scroll", function(){
-            //console.log("scrolltop",$(window).scrollTop());
-            //console.log("height",$(window).height());
-            //console.log("linechart top:",$(".line-chart").offset().top);
-            if($(".statistics-row").offset().top - $(window).scrollTop() < $(window).height()/2 - 200 ){
-                //alert("On viewport");
-                $(".statistics-row").addClass("anim");
-            }
-        });
-    },[])
-
   return (
 <>
     <section id='statistics1'>
