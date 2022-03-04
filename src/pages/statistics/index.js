@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import 'https://code.jquery.com/jquery-3.6.0.slim.min.js'
 import '../../style/statistics.scss'
 import '../../style/animate.css'
 import $ from "jquery";
@@ -9,13 +8,6 @@ import $ from "jquery";
 export default function Index() {
 
     useEffect(()=>{
-        // VanillaTilt.init(document.querySelectorAll(".pakage-div-two,.pakage-div-three"),{
-        //     max: 3,
-        //     speed: 40,
-        //     glare : true,
-        //     "max-glare":1,
-        // });
-
         $(window).on("scroll", function(){
             //console.log("scrolltop",$(window).scrollTop());
             //console.log("height",$(window).height());
