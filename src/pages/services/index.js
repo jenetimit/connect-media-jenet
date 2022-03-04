@@ -11,84 +11,112 @@ import  Parallax from 'react-rellax';
 
 
 export default function index() {
-    const itemList1 = ["Live-Stream Services: Increase viewership & followers",
-        "Customized Videos",
-        "Create Short Videos from Sermons",
-        "Personalized Shorts"]
+    // const itemList1 = ["Live-Stream Services: Increase viewership & followers",
+    //     "Customized Videos",
+    //     "Create Short Videos from Sermons",
+    //     "Personalized Shorts"]
 
-    const itemList2 =["Live-Stream Services: Increase viewership & followers",
-        "Customized Videos",
-        "Create Short Videos from Sermons",
-        "Done-for-you pictures",
-        "Personalized Reels",
-        "Instagram Stories"]
+    // const itemList2 =["Live-Stream Services: Increase viewership & followers",
+    //     "Customized Videos",
+    //     "Create Short Videos from Sermons",
+    //     "Done-for-you pictures",
+    //     "Personalized Reels",
+    //     "Instagram Stories"]
 
-        const itemList3 =["Live-Stream Services: Increase viewership & followers",
-        "Customized Videos",
-        "Create Short Videos from Sermons",
-        "Done-for-you pictures",
-        "Personalized Reels",
-        "Facebook Stories"]
+    //     const itemList3 =["Live-Stream Services: Increase viewership & followers",
+    //     "Customized Videos",
+    //     "Create Short Videos from Sermons",
+    //     "Done-for-you pictures",
+    //     "Personalized Reels",
+    //     "Facebook Stories"]
 
-        const itemList4 =["Google advertising",
-        "Facebook advertising",
-        "Customized Videos",
-        "Youtube advertising"]
+    //     const itemList4 =["Google advertising",
+    //     "Facebook advertising",
+    //     "Customized Videos",
+    //     "Youtube advertising"]
 
     return (
-        <div >
-            <Row className='service-main-div'>
-                <Col xl={3} md={12} sm={12} xxl={3} className='text_service'>
-                    <Parallax speed={-2.5}>
-                        <p className='service_text '>Services</p>
-                        <div className='vertical_line '></div>
-                        <FaArrowDown className='serviceIcon '/>
-                    </Parallax>
-
-                </Col>
-
-                <Col xl={9} md={12} sm={12} xxl={9}>
-
-                    <Row>
-                        <Col sm={12} md={12} xl={6} xxl={6}>
-                            <Card width="150" height="140"  alt="youtube icon" image={img1} imgId="youtube_icon"
-                             list={itemList1} text="Youtube Management"></Card>
-                        </Col>
-
-
-                        <Col sm={12} md={12} xl={6} xxl={6} className=''>
-
-                        <Card width="150" height="140"  alt="youtube icon" image={img2} imgId="youtube_icon" list={itemList2} text="Instagram Management"></Card>
-                        </Col>
-
-
-                    </Row>
-
-                    <Row >
-
-                        <Col sm={12} md={12} xl={6} xxl={6}>
-                            <Card width="150" height="140"  alt="youtube icon" image={img3} imgId="youtube_icon" list={itemList3} text="Facebook Management"></Card>
-                        </Col>
-
-
-                        <Col sm={12} md={12} xl={6} xxl={6} className='margin-top-15rm'>
-
-                        <Card width="150" height="140"  alt="youtube icon" image={img4} imgId="youtube_icon" list={itemList4} text="Advertisement Management"></Card>
-                        </Col>
-
-
-                    </Row>
-                    
-                    
-                </Col>
-
-            </Row>
-            
-
-            
-         
-                
+        <>
+<section id='service1'>
+    <section>
+        <div class="service-main-div">
+            <div class="sr-heading-div">
+                <h1>Packages</h1>
+                <div></div>
+            </div>
+            <div class="srv-row-div-one">
+                <img src={require('../../assets/images/youtube.png')} alt="" />
+                <div class="sr-content-div">
+                    <ul>
+                        <li><i>-</i> For Up To 2 Social Media Platforms</li>
+                        <li><i>-</i>3 Post Per Week</li>
+                        <li><i>-</i>All Images, Graphics And CopyWriting Included. Featurd Videos Available</li>
+                        <li><i>-</i>Messaging And Comment Moderation Included</li>
+                        <li><i>-</i>Boosted Post Add-One Available</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="label-div">
+                <h1>YoutubeManagement</h1>
+            </div>
+            <div class="srv-row-div-one">
+                <img src={require('../../assets/images/instagram.png')} alt="" />
+                <div class="sr-content-div">
+                    <ul>
+                        <li><i>-</i> For Up To 2 Social Media Platforms</li>
+                        <li><i>-</i>3 Post Per Week</li>
+                        <li><i>-</i>All Images, Graphics And CopyWriting Included. Featurd Videos Available</li>
+                        <li><i>-</i>Messaging And Comment Moderation Included</li>
+                        <li><i>-</i>Boosted Post Add-One Available</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="label-div">
+                <h1>InstagramManagement</h1>
+            </div>
         </div>
+        <div class="service-main-div">
+            <div class="line-div">
+            </div>
+            <div class="srv-row-div-one">
+                <img src={require('../../assets/images/facebook.png')} alt="" />
+                <div class="sr-content-div">
+                    <ul>
+                        <li><i>-</i> For Up To 2 Social Media Platforms</li>
+                        <li><i>-</i>3 Post Per Week</li>
+                        <li><i>-</i>All Images, Graphics And CopyWriting Included. Featurd Videos Available</li>
+                        <li><i>-</i>Messaging And Comment Moderation Included</li>
+                        <li><i>-</i>Boosted Post Add-One Available</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="label-div">
+                <h1>FacebookManagement</h1>
+            </div>
+            <div class="srv-row-div-one">
+                <img src={require('../../assets/images/box.png')} alt="" />
+                <div class="sr-content-div">
+                    <ul>
+                        <li><i>-</i> For Up To 2 Social Media Platforms</li>
+                        <li><i>-</i>3 Post Per Week</li>
+                        <li><i>-</i>All Images, Graphics And CopyWriting Included. Featurd Videos Available</li>
+                        <li><i>-</i>Messaging And Comment Moderation Included</li>
+                        <li><i>-</i>Boosted Post Add-One Available</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="label-div">
+                <h1>DigitalAdvertisementSuport</h1>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="space-div">
+        
+    </div>
+</section>
+            </>
     )
 }
 

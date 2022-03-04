@@ -4,11 +4,15 @@ import '../../style/home.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BsList } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
-import { useHistory,Link} from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import { fadeInUp } from 'react-animations'
 import { StyleSheet, css } from 'aphrodite';
 import { Dropdown } from 'react-bootstrap';
 import Sidebar from '../sidebar/sidebar';
+import Buttons from '../Packages/Buttons';
+import '../../style/button.scss'
+import { animateScroll as scroll } from "react-scroll";
+import { HashLink as Link} from 'react-router-hash-link';
 
 var sessionstorage = require('sessionstorage');
 
@@ -23,7 +27,7 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function Navbar() {
+export default function Navbar(props,id) {
 
     let history = useHistory();
 
@@ -38,32 +42,32 @@ export default function Navbar() {
             
                     {sessionStorage.getItem('token') !== null ? (
                             <>
-                            <FiUser className='menu-nav' onClick={profileInfo}  />     
+                                 
                             {/* <BsList className='menu-nav' onClick={sidebar}/> */}
                                 <Dropdown>
                                 <Dropdown.Toggle variant="Secondary" id="dropdown-basic" className='menu-btn pointer'>
-                                Menu
+                                <FiUser size={40} className='menu-nav'/>
                                 </Dropdown.Toggle>
 
-                                <Dropdown.Menu>
+                                <Dropdown.Menu style={{border: 'none'}}>
+                                    <Dropdown.Item onClick={profileInfo}>Modify Profile</Dropdown.Item>
                                     <Dropdown.Item href="/orders">My Orders</Dropdown.Item>
                                     <Dropdown.Item href="/messages">Messages</Dropdown.Item>
                                     <Dropdown.Item href="/gene-enquiry">General Enquiry</Dropdown.Item>
                                     <Dropdown.Item onClick={signout}>Signout</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
+                            
                             <Sidebar />
 
                             {/* <a href='/sidebar' style={{padding: 10,color: '#fff',backgroundColor: '#000914',borderWidth: 1,borderColor: "#000914",borderRadius: 5}}>MENUBAR</a> */}
 
                             </>
                     ):(
-                        <>
-                  
-
-                        <a href='/login' style={{padding: 10,color: '#fff',backgroundColor: '#000914',borderWidth: 1,borderColor: "#000914",borderRadius: 5}}>LOGIN</a>
+                        <> 
+                        <Buttons text='login' click="/login"  style={{borderColor:props.color}} className='button-text px-5'>{props.text}</Buttons>
                        
-                        <a href='/registration' style={{padding: 10,color: '#fff',backgroundColor: '#000914',borderWidth: 1,borderColor: "#000914",borderRadius: 5}}>REGISTER</a>
+                        <Buttons text='Register'  click="/registration"   style={{borderColor:props.color}} className='button-text px-5'>{props.text}</Buttons>
 
                         <Sidebar />
                         </>
@@ -98,6 +102,7 @@ export default function Navbar() {
     function home()
     {
         history.push('/home');
+        // scroll.scrollToTop();
     }
 
 }

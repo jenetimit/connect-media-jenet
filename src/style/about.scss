@@ -157,3 +157,339 @@
         }
 
   } 
+  
+
+
+
+
+
+
+  //css done by ashique
+
+
+  .second-container{
+    background-color: #000914;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.sc-div-one{
+    width: 80%;
+    height: 100vh;  
+}
+
+.second-container img{
+    width: 95%;
+    height: 70vh;
+}
+
+.second-container h1{
+    color: white;
+    font-size: 4vw;
+    padding: 0;
+    margin: 0;
+}
+
+.about-container{
+    background-color: #000914;
+    width: 100%;
+}
+
+/* row one */
+
+.about-row-one{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.left-div-one{
+    width: 45%;
+    height: 90%;
+    position: relative;
+}
+.left-div-one img{
+    width: 100%;
+    height: 100%;
+}
+
+.left-div-one h1{
+    color: white;
+    transform: rotate(90deg);
+    position: absolute;
+    font-size: 6vw;
+    right: .5vw;
+    bottom: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+.right-div-one{
+    width: 45%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.right-div-one p{
+    color: white;
+    font-size: 1.3vw;
+    line-height: 2.5vw;
+    padding: 5%;
+}
+
+/* row two */
+
+.about-row-two{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.left-div-two{
+    width: 45%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.left-div-two h1{
+    color: white;
+    transform: rotate(90deg);
+    position: absolute;
+    font-size: 6vw;
+    right: -2vw;
+    bottom: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.left-div-two p{
+    color: white;
+    font-size: 1.3vw;
+    line-height: 2.5vw; 
+    padding: 5%;
+}
+
+.right-div-two{
+    width: 45%;
+    height: 90%;
+}
+
+.right-div-two img{
+    width: 100%;
+    height: 100%;
+}
+
+/* ==================================================================== piller section ==================================================================== */
+
+.piller-main-div{
+    background-color: #000914;
+    padding: 5%;
+}
+
+#h1-icon{
+    width: 5vw;
+    height: 5vw;
+    margin-right: 10px;
+}
+
+#p-icon{
+    height: 2vw;
+}
+
+/* piller top div */
+
+.piller-top-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.piller-top-div .div-one{
+    display: flex;
+    align-items: center;
+    margin-left: 6vw;
+}
+.piller-top-div .div-two{
+    display: flex;
+}
+
+.piller-top-div p{
+    color: white;
+    font-size: 1.2vw;
+    padding-left: 2%;
+}
+.piller-top-div h1{
+    color: white;
+    font-size: 5vw;
+    margin: 0;
+    padding: 0;
+}
+
+/* piller row one start */
+
+.piller-row-one{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    /* background-color: aqua; */
+}
+
+.row-one-img{
+    width: 40%;
+    height: 100%;
+    position: relative;
+}
+
+.row-one-img img{
+   width: 100%;
+   height: 100%; 
+}
+
+.piller-row-one h1{
+    color: white;
+    transform: rotate(90deg);
+    position: absolute;
+    font-size: 5vw;
+    left: -90%;
+    bottom: 0px;
+    top: -60%;
+    margin: 0;
+    padding: 0;
+}
+
+/* piller row two start */
+
+.piller-row-two{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    /* background-color: aqua; */
+    margin-top: -15%;
+}
+.row-two-img{
+    width: 40%;
+    height: 100%;
+    margin-left: 20%;
+}
+.row-two-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.piller-row-two div{
+    color: black;
+}
+.piller-row-two h1{
+   color: white;
+   font-size: 5vw;
+   padding: 0;
+   margin: 0;
+   margin-left: -35%;
+   margin-top: 10%;
+}
+.piller-row-two p{
+    color: white;
+    font-size: 1.3vw;
+    margin-left: 5%;
+ }
+
+ .piller-row-two .div-one{
+     display: flex;
+     align-items: center;
+ }
+
+
+
+/* piller row three start */
+
+.piller-row-three{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    /* background-color: aqua; */
+    margin-top: -15%;
+    align-items: flex-end;
+}
+
+.piller-row-three .div-one{
+    display: flex;
+    align-items: center;
+}
+.row-three-img{
+    width: 40%;
+    height: 100%;
+    margin-left: 2%;
+}
+.row-three-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.piller-row-three h1{
+    color: white;
+    font-size: 5vw;
+    padding: 0;
+    margin: 0;
+ }
+ .piller-row-three p{
+     color: white;
+     font-size: 1.3vw;
+     margin-bottom: 5%;
+     margin-right: 2%;
+  }
+
+/* piller Colum four start */
+
+.piller-Colum-four{
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    /* background-color: aqua; */
+    margin-top: -15%;
+}
+.row-four-img{
+    width: 40%;
+    height: 100%;
+    margin-left: 60%;
+    position: relative;
+}
+.row-four-img img{
+    width: 100%;
+    height: 100%;
+}
+.row-four-img h1{
+    color: white;
+    transform: rotate(90deg);
+    position: absolute;
+    font-size: 5vw;
+    bottom: 10%;
+    right: -30%;
+    margin: 0;
+    padding: 0;
+}
+
+.piller-Colum-four .div-one{
+    width: 90%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.piller-Colum-four p{
+    color: white;
+    font-size: 1.3vw;
+    margin-right: 2%;
+ }

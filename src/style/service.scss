@@ -164,3 +164,129 @@ ul.dashed {
 }
 
 }
+
+
+
+//css done by ashique
+
+.service-main-div{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5%;
+}
+
+.sr-heading-div div{
+  margin-left: 25vw;
+  margin-top: -2.5vw;
+  width: 40vw;
+  height: 20px;
+  background-color: white;
+}
+
+.sr-heading-div{
+  padding-bottom: 6vw;
+  margin-top: 10vw;
+  transform: rotate(90deg);
+  width: 0;
+  height: 0;
+}
+
+.sr-heading-div h1{
+  color: white;
+  font-size: 2vw;
+  padding: 0;
+  margin: 0;
+}
+
+.sr-heading-div h1{
+  margin: 0;
+  padding: 0;
+  font-size: 5vw;
+  color: white;
+}
+
+.srv-row-div-one{
+  position: relative;
+  margin-top: 5%;
+  width: 25%;
+  height: 90%;
+  background: linear-gradient(0deg,#000,#000000e7);
+}
+
+.srv-row-div-one img{
+  width: 10vw;
+  margin: -2vw;
+}
+
+.label-div{
+  transform: rotate(90deg);
+  width: 0;
+  height: 0;
+  margin-top: 10%;
+}
+.label-div h1{
+  color: white;
+  padding: 0;
+  margin: 0;
+  font-size: 2.5vw;
+
+}
+
+.srv-row-div-one:before,.srv-row-div-one:after{
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background: linear-gradient(45deg,#fb0094,#0000ff,#ff0000,#fb0094,#0000ff,#ff0000);
+  background-size: 400%;
+  width: calc(100% + 4px); 
+  height: calc(100% + 4px);
+  z-index: -1;
+  animation: animate 20s linear infinite;
+}
+
+
+.sr-content-div{
+  padding-left: 5%;
+  margin-top: 8vw;
+}
+
+.sr-content-div li{
+  padding-left: 2vw;
+  color: white;
+  font-size: 1.2vw;
+  padding-top: 10px;
+  position: relative;
+}
+
+.sr-content-div li i{
+  top: 10px;
+  left: 0;
+  position: absolute;
+  font-size: 1.5vw;
+  color:rgb(139, 139, 139);
+}
+
+.srv-row-div-one:after{
+  filter: blur(40px);
+}
+
+@keyframes animate{
+
+  0%{
+      background-position: 0 0;
+  }
+  50%{
+      background-position: 300%;
+  }
+  100%{
+      background-position: 0 0;
+  }
+}
+
+.space-div{
+  height: 25vh;
+}
+

@@ -84,7 +84,7 @@ export default function Index(props) {
 
   return (
   
-    <div style={{marginTop:'10rem'}} >
+    <div>
       <Container >
 
     

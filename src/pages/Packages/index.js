@@ -13,42 +13,47 @@ export default function index() {
 
 
     return (
-        <Container style={{paddingBottom:'10rem'}} className='my-5 padding-top padding-top-60 pkg_div'>
-            <Parallax speed={-2.5}>
-             {/* <p className='campaign_text center-align pkg_text' style={{marginTop:'15rem'}}>Packages</p> */}
-             {/* pkg-text */}
-            </Parallax>
-             <Row className='margin-top-53'>
-
-                <Col xl={4} sm={12} md={12} xxl={4} className=''>
-                 
-                    <p className='campaign_text center-align pkg-text' style={{marginTop:'15rem'}}>Packages</p>
-
-            
-                </Col> 
-
-                <Col xl={4} sm={12} md={12} xxl={4} className=''>
-              
-                        <Card heading="Standard" month="month" rating="2.4" ratingColor="#E4115E" img={pink} speed="-4.2" servicelist="/standard-list" ></Card>
-                 
-                 </Col>
-
-                {/* <Col xl={4} sm={12} md={12} xxl={4} className=''>
-                 
-                        <Card heading="Comprehensive" month="month" rating="5" ratingColor="#E3B630" img={yellow} speed="-4.2"></Card>
-
-                   
-                </Col> */}
-
-
-                 <Col xl={4} sm={12} md={12} xxl={4} className=''>
-
-                 
-                    <Card heading="Customized" month="month" rating="3.5" ratingColor="#0EAE83" img={green} speed="-4.2" servicelist="/customized-list" ></Card>
-                   
-                 </Col>
-
-             </Row>
-        </Container>
+        <>
+        <section id='package1'>
+            <div class="main-pakages-div">
+                <div class="pakage-div-one">
+                    <h1>Packages</h1>
+                </div>
+                <div class="pakage-div-two">
+                    <div class="img-div">
+                        <h4>Standard</h4>
+                        <img src={require('../../assets/images/pakage_card-1.png')} alt="" />
+                    </div>
+                    <div class="content-div">
+                    <ul>
+                        <li><i class="fa fa-check-circle"></i> For Up To 2 Social Media Platforms</li>
+                        <li><i class="fa fa-check-circle"></i>3 Post Per Week</li>
+                        <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featurd Videos Available</li>
+                        <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
+                        <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                    </ul>
+                    </div>
+                    <button>Register</button>
+                </div>
+                <div class="pakage-div-three">
+                    <div class="img-div">
+                        <h4>Standard</h4>
+                        <img src={require('../../assets/images/pakge_card.png')} alt="" />
+                    </div>
+                    <div class="content-div">
+                    <ul>
+                        <li><i class="fa fa-check-circle"></i> For Up To 2 Social Media Platforms</li>
+                        <li><i class="fa fa-check-circle"></i>3 Post Per Week</li>
+                        <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featurd Videos Available</li>
+                        <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
+                        <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                    </ul>
+                    </div>
+                    <button>Register</button>
+                </div>
+                <div class="pakage-div-four"></div>
+            </div>
+        </section>
+        </>
     )
 }

@@ -2,8 +2,13 @@ import React,{useState} from 'react'
 import '../../style/sidebar.scss'
 import { FiMenu } from 'react-icons/fi';
 import { AiOutlineClose } from "react-icons/ai";
+import { useHistory } from 'react-router-dom';
+import Pillars from '../../pages/About/pillars';
+import { HashLink as Link} from 'react-router-hash-link';
 
 export default function Sidebar() {
+
+  let history = useHistory();
 
   const [isOpen, setIsopen] = useState(false);
 
@@ -15,7 +20,7 @@ export default function Sidebar() {
   return (
     <>
     <div>
-      <div className="container-fluid mt-3">
+      <div className="container-fluid">
                 
               
                 {/* <div className="btn btn-primary" onClick={sidebar} ></div> */}
@@ -28,11 +33,24 @@ export default function Sidebar() {
                     </div>
                     <div className="sd-body">
                         <ul>
-                            <li><a className="sd-link">About Us</a></li>
-                            <li><a className="sd-link">Why Connect</a></li>
-                            <li><a className="sd-link">Services</a></li>
-                            <li><a className="sd-link">Campaigns</a></li>
-                            <li><a className="sd-link">Packages</a></li>
+                            {/* <li>
+                                <Link smooth className="sd-link" to="#Home1">Home</Link>
+                            </li> */}
+                            <li>
+                                <Link smooth className="sd-link" to="#About1">About Us</Link>
+                            </li>
+                            <li>
+                              <Link smooth className="sd-link" to="#whyconnect1">Why Connect</Link>
+                            </li>
+                            <li>
+                              <Link smooth className="sd-link" to="#statistics1">Statistics</Link>
+                            </li>
+                            {/* <li>
+                              <Link smooth className="sd-link" to="#service1">Services</Link>
+                            </li> */}
+                            <li>
+                              <Link smooth className="sd-link" to="#package1">Packages</Link>
+                            </li>
                             <li><a className="sd-link">Contact</a></li>
                             <li><a className="sd-link">Admin</a></li>
                         </ul>
@@ -44,4 +62,7 @@ export default function Sidebar() {
     </div></>
 
   )
+  function gotoabout(){
+    <Pillars />
+  }
 }

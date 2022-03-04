@@ -22,7 +22,20 @@ import Enquiry from '../pages/Enquiry/Index'
 import '../style/main.scss'
 import Mainscreen from '../../src/pages/MainScreen/index'
 import Sidebar from '../components/sidebar/sidebar'
-
+import Abouts from '../../src/pages/About/index'
+import Homescreen from '../../src/pages/home/index'
+import Pillarscreen from '../../src/pages/About/pillars'
+// import Service from '../../src/pages/services/index'
+import Home from '../../src/pages/home/index'
+import About from '../../src/pages/About/index'
+// import Features from '../../pages/About/features'
+import Service from '../../src/pages/services/index'
+import Campaign from '../../src/pages/campaign/index'
+import Package from '../../src/pages/Packages/index'
+import Contact from '../../src/pages/contact/contact'
+import Whyconnect from '../../src/pages/About/whyconnect'
+import Pillars from '../../src/pages/About/pillars'
+import Statistics from '../../src/pages/statistics/index';
 import {
     BrowserRouter as Router,
   
@@ -34,14 +47,36 @@ import {
 export default function Index() {
     let data = useLocation();
     return (
-        <div>
-            <Navbar />
+            
+            <div>
+
             <Switch>
                 <Route exact path="/">
                     
                 <MainScreen />
 
                 </Route>
+                <Route exact path="/Home1" component={Home}/>
+                <Route exact path="/About1" component={About}/>
+                <Route exact path="/whyconnect1" component={Whyconnect}/>
+                <Route exact path="/service1" component={Service}/>
+                <Route exact path="/package1" component={Package}/>
+                <Route exact path="/statistics1" component={Statistics}/>
+
+
+
+
+                {/* <Route exact path='/Pillarscreen' >
+                    
+                    <Pillarscreen />
+
+                </Route> */}
+
+                {/* <Route exact path='/Homescreen' >
+                    
+                    <Homescreen />
+
+                </Route> */}
 
                 <Route exact path='/registration' >
                     
@@ -78,6 +113,18 @@ export default function Index() {
                     <MainScreen />
 
                 </Route>
+
+                
+                {/* <Route exact path='/About'>
+
+                    <Abouts />
+
+                </Route> */}
+                {/* <Route exact path='/Services'>
+
+                <Service />
+
+                </Route> */}
 
                 <Route exact path='/customized-list'>
 
