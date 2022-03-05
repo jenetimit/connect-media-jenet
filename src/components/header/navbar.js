@@ -3,7 +3,7 @@ import { Container ,Row ,Col} from 'react-bootstrap'
 import '../../style/home.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BsList } from "react-icons/bs";
-import { FiUser } from "react-icons/fi";
+// import { FiUser,FiMenu } from "react-icons/fi";
 import { useHistory} from "react-router-dom";
 import { fadeInUp } from 'react-animations'
 import { StyleSheet, css } from 'aphrodite';
@@ -13,6 +13,7 @@ import Buttons from '../Packages/Buttons';
 import '../../style/button.scss'
 import { animateScroll as scroll } from "react-scroll";
 import { HashLink as Link} from 'react-router-hash-link';
+import { FaUserTie }  from "react-icons/fa";
 
 var sessionstorage = require('sessionstorage');
 
@@ -39,14 +40,14 @@ export default function Navbar(props,id) {
                     
                     <div className='center-align'>
 
-            
+                    {/* {sessionStorage.getItem('token')} */}
                     {sessionStorage.getItem('token') !== null ? (
                             <>
                                  
                             {/* <BsList className='menu-nav' onClick={sidebar}/> */}
-                                <Dropdown>
+                               <Dropdown>
                                 <Dropdown.Toggle variant="Secondary" id="dropdown-basic" className='menu-btn pointer'>
-                                <FiUser size={40} className='menu-nav'/>
+                                <FaUserTie size={40} className='menu-nav'/>
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu style={{border: 'none'}}>
@@ -59,17 +60,20 @@ export default function Navbar(props,id) {
                             </Dropdown>
                             
                             <Sidebar />
+                              
 
                             {/* <a href='/sidebar' style={{padding: 10,color: '#fff',backgroundColor: '#000914',borderWidth: 1,borderColor: "#000914",borderRadius: 5}}>MENUBAR</a> */}
 
                             </>
                     ):(
                         <> 
+                        
                         <Buttons text='login' click="/login"  style={{borderColor:props.color}} className='button-text px-5'>{props.text}</Buttons>
                        
                         <Buttons text='Register'  click="/registration"   style={{borderColor:props.color}} className='button-text px-5'>{props.text}</Buttons>
 
                         <Sidebar />
+                        
                         </>
                     )
                             }
@@ -97,6 +101,7 @@ export default function Navbar(props,id) {
     {
         sessionstorage.clear();
         history.push('/login');
+        history.go(0)
     }
 
     function home()

@@ -22,6 +22,7 @@ export default function index() {
     <Statistics />
     <Service />
     <Package />
+    <Contact />
     </>
   );
 

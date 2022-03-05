@@ -27,15 +27,14 @@ export default function index() {
                 </div>
                 <div class="right-div-one">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dictum in nulla quis rutrum. Donec massa metus, pellentesque et lorem nec, fringilla tristique ante. Quisque lorem eros, laoreet bibendum cursus a, luctus sed turpis. Sed ut dictum turpis, sed interdum sapien. Nam placerat vestibulum dui, sit amet dictum lacus congue ut. Integer tincidunt eros eget dictum vehicula. Suspendisse in sollicitudin purus. In et tellus ut arcu scelerisque sollicitudin. Aenean quis gravida libero, pellentesque iaculis turpis. Praesent accumsan lacus ac gravida condimentum. Proin faucibus consequat elit vitae consectetur. Aenean sed dictum elit. Pellentesque enim lorem, vehicula vitae turpis blandit, dignissim vulputate elit.Etiam convallis diam lorem, eu accumsan diam aliquam et. Curabitur vitae tortor id urna malesuada consectetur. 
-                    </p>
+                    We are a faith based, passionate and creative team of Christian believers and engagement specialists carrying the ever-relevant gospel of the Lord Jesus Christ to the present generation using social media. We are tech professionals equipped with modern-day IT and marketing skills, fully committed to utilizing social media to its fullest extent in spreading the gospel of the Lord Jesus Christ.                    </p>
                 </div>
             </div>
 
             <div class="about-row-two">
                 <div class="left-div-two">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dictum in nulla quis rutrum. Donec massa metus, pellentesque et lorem nec, fringilla tristique ante. Quisque lorem eros, laoreet bibendum cursus a, luctus sed turpis. Sed ut dictum turpis, sed interdum sapien. Nam placerat vestibulum dui, sit amet dictum lacus congue ut. Integer tincidunt eros eget dictum vehicula. Suspendisse in sollicitudin purus. In et tellus ut arcu scelerisque sollicitudin. Aenean quis gravida libero, pellentesque iaculis turpis. Praesent accumsan lacus ac gravida condimentum. Proin faucibus consequat elit vitae consectetur. Aenean sed dictum elit. Pellentesque enim lorem, vehicula vitae turpis blandit, dignissim vulputate elit.Etiam convallis diam lorem, eu accumsan diam aliquam et. Curabitur vitae tortor id urna malesuada consectetur.
+                    Driven by Matthew 28:19-20, we have an opportunity that no other previous generations had in spreading the gospel to the masses through the internet; specifically social media. With our army of tech soldiers and our love for Jesus, we help churches and ministries have a strong presence in a variety of global media platforms.
                     </p>
                     <h1>What we do</h1>
                 </div>

@@ -45,6 +45,7 @@ export default function Index() {
   return (
   
     <div>
+        
       <Container>
 
 {post.map((post,id) => (

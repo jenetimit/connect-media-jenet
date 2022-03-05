@@ -6,6 +6,7 @@ import '../../style/messages.scss';
 import dateFormat from 'dateformat';
 import { useHistory,Link} from "react-router-dom";
 import { FcLeftDown,FcRightUp } from "react-icons/fc";
+import Parallax from 'react-rellax'
 
 var sessionstorage = require('sessionstorage');
 
@@ -50,6 +51,13 @@ export default function Index() {
       <>      
       
     <div>
+        
+     <Parallax speed={5}>
+        <img src={require('../../assets/images/Rectangle 40.png')} alt="bg" width='100%' height={250} style={{
+              objectFit:'cover'
+          }}/>
+
+       </Parallax>
         <Container>
             <Row >
                 <Col sm={12} md={2} xl={2} xxl={2}>

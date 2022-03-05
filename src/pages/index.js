@@ -36,6 +36,8 @@ import Contact from '../../src/pages/contact/contact'
 import Whyconnect from '../../src/pages/About/whyconnect'
 import Pillars from '../../src/pages/About/pillars'
 import Statistics from '../../src/pages/statistics/index';
+import Requets from '../pages/pendingRequest/Index'
+
 import {
     BrowserRouter as Router,
   
@@ -46,6 +48,7 @@ import {
 
 export default function Index() {
     let data = useLocation();
+
     return (
             
             <div>
@@ -56,27 +59,6 @@ export default function Index() {
                 <MainScreen />
 
                 </Route>
-                <Route exact path="/Home1" component={Home}/>
-                <Route exact path="/About1" component={About}/>
-                <Route exact path="/whyconnect1" component={Whyconnect}/>
-                <Route exact path="/service1" component={Service}/>
-                <Route exact path="/package1" component={Package}/>
-                <Route exact path="/statistics1" component={Statistics}/>
-
-
-
-
-                {/* <Route exact path='/Pillarscreen' >
-                    
-                    <Pillarscreen />
-
-                </Route> */}
-
-                {/* <Route exact path='/Homescreen' >
-                    
-                    <Homescreen />
-
-                </Route> */}
 
                 <Route exact path='/registration' >
                     
@@ -92,7 +74,20 @@ export default function Index() {
 
                 <Route exact path='/login'>
 
-                    <Login serviceType={data.serviceType} />
+                    <Login />
+
+                </Route>
+
+                <Route exact path='/login/:standard-list'>
+
+                <Login  />
+
+                </Route>
+
+
+                <Route exact path='/login/:customized-list'>
+
+                <Login  />
 
                 </Route>
 
@@ -102,11 +97,11 @@ export default function Index() {
 
                 </Route>
 
-                <Route exact path='/forgot_password'>
+                <Route exact path='/reset_password'>
 
                     <ResetPassword />
 
-                </Route>
+                    </Route>
 
                 <Route exact path='/home'>
 
@@ -114,17 +109,11 @@ export default function Index() {
 
                 </Route>
 
+                <Route exact path='/order-view'>
+
+                    <EachOrder order={data.order} type={data.type} />
                 
-                {/* <Route exact path='/About'>
-
-                    <Abouts />
-
-                </Route> */}
-                {/* <Route exact path='/Services'>
-
-                <Service />
-
-                </Route> */}
+                </Route>
 
                 <Route exact path='/customized-list'>
 
@@ -147,28 +136,45 @@ export default function Index() {
                 </Route>
 
                 <Route exact path='/events-creation'>
+
                     <EventsCreation />
+
                 </Route>
 
                 <Route exact path='/million-posts'>
+
                     <MillionPosts />
+
                 </Route>
 
                 <Route exact path='/staticPosts'>
+
                     <StaticPosts />
+
                 </Route>
                 
                 <Route exact path='/messages'>
+
                     <Messages />
+
                 </Route>
 
                 <Route exact path='/orders'>
+
                     <Orders  />
+
                 </Route>
 
-                <Route exact path='/order-view'>
-                    <EachOrder order={data.order} />
+                
+                <Route exact path='/request/:type/:id'>
+
+                    <Requets/>
+                    
                 </Route>
+
+                {/* <Route exact path='/order-view'>
+                    <EachOrder order={data.order} />
+                </Route> */}
 
                 <Route exact path='/related-msgs'>
                     <Relatedmsgs data={data.data}/>
@@ -182,7 +188,14 @@ export default function Index() {
                     <Sidebar />
                 </Route>
                 
-               
+                <Route exact path="/Home1" component={Home}/>
+                <Route exact path="/About1" component={About}/>
+                <Route exact path="/whyconnect1" component={Whyconnect}/>
+                <Route exact path="/service1" component={Service}/>
+                <Route exact path="/package1" component={Package}/>
+                <Route exact path="/statistics1" component={Statistics}/>
+                <Route exact path="/contact1" component={Contact}/>
+
 
             </Switch>
             <Footer />

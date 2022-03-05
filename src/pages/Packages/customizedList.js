@@ -3,9 +3,15 @@ import { Container,Row,Col, Form } from 'react-bootstrap';
 import Service from '../../components/Packages/servicelist';
 import axios from 'axios'
 import { Url } from '../../GLOBAL/global';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from 'react-router-dom';
+import Parallax from 'react-rellax'
+import '../../style/package.scss'
 var sessionstorage = require('sessionstorage');
 
 export default function CustomizedList() {
+  let history = useHistory();
      const [months,setMonths] = React.useState();
      
    
@@ -80,7 +86,14 @@ export default function CustomizedList() {
 
   return (
     <div>
-        <Container >
+      
+     <Parallax speed={5}>
+        <img src={require('../../assets/images/Rectangle 40.png')} alt="bg" width='100%' height={250} style={{
+              objectFit:'cover'
+          }}/>
+
+       </Parallax>
+        <Container className='' >
 
    
   
@@ -107,52 +120,65 @@ export default function CustomizedList() {
             <Service id="Advertising your upcoming events on Youtube" name="Advertising your upcoming events on Youtube" /> 
             */}
 
-    <Form >
+<Form className='mt-5'>
 
-          {
-            lists.map(item => (
-             <>
-                <label>
-                  <input
-                    type="checkbox"
-                    key={item.id}
-                    value={item.id}
-                    onChange={(e)=> handleChange(e,item.value)}
-                  /> {item.value}
-                </label> <br></br>
-                </>
-            ))
-          }
+<Row className=' mx-5'>
+      <Col sm={3} md={3} xl={3} xxl={3}></Col>
+  
+      {
+      lists.map((item,id) => (
+      <>
+          <Col sm={6} md={6} xl={6} xxl={6}>
+          <label className='checkbox-label' key={id}>
+            <input
+              type="checkbox"
+              key={item.id}
+              value={item.id}
+              className='checkbox'
+              onChange={(e)=> handleChange(e,item.value)}
+            /> &nbsp;{item.value}
+          </label> <br></br>
+          </Col>
+          </>
+      ))
+    }
 
-            <br></br>
-
-            <div >
-        <label>Number of Months : </label>&nbsp; &nbsp;
-
-        <select id="months" required={true} >
-          <option value="1" >1 month</option>
-          <option value="2" >2 month</option>
-          <option value="3">3 month</option>
-          <option value="4">4 month</option>
-          <option value="5">5 month</option>
-          <option value="6">6 month</option>
-          <option value="7">7 month</option>
-          <option value="8">8 month</option>
-          <option value="9">9 month</option>
-          <option value="10">10 month</option>
-          <option value="11">11 month</option>
-          <option value="12">12 month</option>
-        </select>
+    <Col sm={3} md={3} xl={3} xxl={3}></Col>
+ 
+</Row>
 
 
-      </div>
+
+<br></br>
+
+<div className='mx-5' >
+<label>Number of Months : </label>&nbsp; &nbsp;
+
+<select id="months" required={true} className="select-months" >
+<option value="1" >1 month</option>
+<option value="2" >2 month</option>
+<option value="3">3 month</option>
+<option value="4">4 month</option>
+<option value="5">5 month</option>
+<option value="6">6 month</option>
+<option value="7">7 month</option>
+<option value="8">8 month</option>
+<option value="9">9 month</option>
+<option value="10">10 month</option>
+<option value="11">11 month</option>
+<option value="12">12 month</option>
+</select>
 
 
-      <button type='button' onClick={handleSubmit} >Submit</button>
-              
-    </Form>
+</div>
 
-       
+<div className='my-5 mx-5'>
+<button type='button' onClick={handleSubmit} className='button-text px-5' >Submit</button>
+</div>
+  
+</Form>
+
+       <ToastContainer/>
         </Container> 
     </div>
     );
@@ -207,7 +233,14 @@ export default function CustomizedList() {
             })
             .then(function (response) {
                 //handle success
-                console.log(response);
+                console.log(response.data.message);
+                if(response.data.message === "package stored Successfully")
+                {
+                  toast.success('Order Request has been send !!',{
+                    autoClose:3000
+                  });
+                  setTimeout(() => history.push('/home'), 3000);
+                }
             })
             .catch(function (response) {
                 //handle error

@@ -8,7 +8,7 @@ import Textbox from '../../components/TextBox'
 import Form from 'react-bootstrap/Form'
 import TextArea from '../../components/TextArea';
 import Buttons from '../../components/Packages/Buttons';
-import Parallax from 'react-rellax'
+// import Parallax from 'react-rellax'
 import { useForm } from 'react-hook-form';
 import { Url } from '../../GLOBAL/global';
 import { useHistory,Link} from "react-router-dom";
@@ -27,17 +27,14 @@ export default function Contact() {
   
 
     return (
-        <Container className='padding-top-20 margin-top-165'>
-            <Parallax speed={-4}>
-            <Row>
-
-            
+        <Container id='contact1' style={{backgroundColor: "#000914"}}>
+            <Row style={{ padding: "40px"}}>
                 <p className='paragrah' >Let's Get In Touch</p>
                 <Col xl={4} sm={12} md={12} xxl={5} className='py-5'>
 
                     
                     <h6 className='heading'>Connect Media</h6>
-                    <p className='para-content'> Curabitur Mollis Bibendum Luctus.Duis Suscipit vitas Dui Send Suscipt.Vestibulam Auctor Nunc Vitas Diam Eleifend,In Maximum Metus Sollicitudin.Quisque Vitae Sodales Lectus.Nam Parttiar Justo Sed Mi Finibus, Vel Tristique Risus Faucibus.</p>
+                    <p className='para-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sapien eget sapien cursus, quis pulvinar lectus dictum. Nullam et sem ex. Vestibulum eu lacinia nibh. Maecenas convallis facilisis egestas. Sed consectetur augue neque, ut mattis purus fermentum et. Morbi nec condimentum dolor, sed aliquam metus.</p>
 
                     <div style={{marginTop:'2rem'}}>
 
@@ -47,8 +44,8 @@ export default function Contact() {
                         </Row>
 
                         <Row className='media-icon'>
-                            <Col xl={1} sm={2} md={3} xxl={1} > <FaFacebookF className='icon' /> </Col>
-                            <Col xl={11} sm={10} md={3} xxl={11} > @Connectmedianetworks</Col>
+                            <Col  xl={3} sm={2} md={3} xxl={1} > <FaFacebookF className='icon' /> </Col>
+                            <Col xl={9} sm={10} md={9} xxl={11} > @Connectmedianetworks</Col>
                         </Row>
 
                         <Row className='media-icon'>
@@ -69,10 +66,10 @@ export default function Contact() {
 
                 <Col></Col>
 
-                <Col xl={8} sm={12} md={12} xxl={5} className='py-5'>
+                <Col xl={6} sm={12} md={12} xxl={5} className='py-5'>
                   
                     <h6 className='heading'>Leave Message</h6>
-                    <p para-content>Curabitur Mollis Bibendum Luctus Duis Suscipit<br></br> Vitas Dui Sed Suscipit</p>
+                    <p para-content>Have any Questions ? We'd love to hear from you.</p>
                     
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <Row>
@@ -97,8 +94,6 @@ export default function Contact() {
                 </Col>
                 
             </Row>
-            </Parallax>
-            <ToastContainer/>
         </Container>
     );
 

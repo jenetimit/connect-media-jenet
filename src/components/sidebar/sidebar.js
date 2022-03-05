@@ -24,7 +24,7 @@ export default function Sidebar() {
                 
               
                 {/* <div className="btn btn-primary" onClick={sidebar} ></div> */}
-                <FiMenu size={40} onClick={sidebar}/>
+                <FiMenu style={{cursor: "pointer"}} size={40} onClick={sidebar}/>
                 <div className={`sidebar ${isOpen == true ? 'active' : ''}`}>
                     <div className="sd-header">
                         <h4 className="mb-0"></h4>
@@ -45,13 +45,16 @@ export default function Sidebar() {
                             <li>
                               <Link smooth className="sd-link" to="#statistics1">Statistics</Link>
                             </li>
-                            {/* <li>
+                            <li>
                               <Link smooth className="sd-link" to="#service1">Services</Link>
-                            </li> */}
+                            </li>
                             <li>
                               <Link smooth className="sd-link" to="#package1">Packages</Link>
                             </li>
-                            <li><a className="sd-link">Contact</a></li>
+                            <li>
+                              <Link smooth className="sd-link" to="#contact1">Contact</Link>
+                            </li>
+                            {/* <li><a className="sd-link">Contact</a></li> */}
                             <li><a className="sd-link">Admin</a></li>
                         </ul>
                     </div>

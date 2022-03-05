@@ -41,38 +41,38 @@ export default function index() {
     <section>
         <div class="service-main-div">
             <div class="sr-heading-div">
-                <h1>Packages</h1>
+                <h1>Services</h1>
                 <div></div>
             </div>
             <div class="srv-row-div-one">
                 <img src={require('../../assets/images/youtube.png')} alt="" />
                 <div class="sr-content-div">
                     <ul>
-                        <li><i>-</i> For Up To 2 Social Media Platforms</li>
-                        <li><i>-</i>3 Post Per Week</li>
-                        <li><i>-</i>All Images, Graphics And CopyWriting Included. Featurd Videos Available</li>
-                        <li><i>-</i>Messaging And Comment Moderation Included</li>
-                        <li><i>-</i>Boosted Post Add-One Available</li>
+                        <li> For Up To 2 Social Media Platforms</li>
+                        <li>3 Posts Per Week</li>
+                        <li>All Images, Graphics And CopyWriting Included. Featured Videos Available</li>
+                        <li>Messaging And Comment Moderation Included</li>
+                        <li>Boosted Post Add-One Available</li>
                     </ul>
                 </div>
             </div>
             <div class="label-div">
-                <h1>YoutubeManagement</h1>
+            <h1 style={{whiteSpace: "nowrap"}}>Youtube Management</h1>
             </div>
             <div class="srv-row-div-one">
                 <img src={require('../../assets/images/instagram.png')} alt="" />
                 <div class="sr-content-div">
                     <ul>
-                        <li><i>-</i> For Up To 2 Social Media Platforms</li>
-                        <li><i>-</i>3 Post Per Week</li>
-                        <li><i>-</i>All Images, Graphics And CopyWriting Included. Featurd Videos Available</li>
-                        <li><i>-</i>Messaging And Comment Moderation Included</li>
-                        <li><i>-</i>Boosted Post Add-One Available</li>
+                        <li> For Up To 2 Social Media Platforms</li>
+                        <li>3 Posts Per Week</li>
+                        <li>All Images, Graphics And CopyWriting Included. Featured Videos Available</li>
+                        <li>Messaging And Comment Moderation Included</li>
+                        <li>Boosted Post Add-One Available</li>
                     </ul>
                 </div>
             </div>
             <div class="label-div">
-                <h1>InstagramManagement</h1>
+                <h1 style={{whiteSpace: "nowrap"}}>Instagram Management</h1>
             </div>
         </div>
         <div class="service-main-div">
@@ -82,31 +82,31 @@ export default function index() {
                 <img src={require('../../assets/images/facebook.png')} alt="" />
                 <div class="sr-content-div">
                     <ul>
-                        <li><i>-</i> For Up To 2 Social Media Platforms</li>
-                        <li><i>-</i>3 Post Per Week</li>
-                        <li><i>-</i>All Images, Graphics And CopyWriting Included. Featurd Videos Available</li>
-                        <li><i>-</i>Messaging And Comment Moderation Included</li>
-                        <li><i>-</i>Boosted Post Add-One Available</li>
+                        <li> For Up To 2 Social Media Platforms</li>
+                        <li>3 Posts Per Week</li>
+                        <li>All Images, Graphics And CopyWriting Included. Featured Videos Available</li>
+                        <li>Messaging And Comment Moderation Included</li>
+                        <li>Boosted Post Add-One Available</li>
                     </ul>
                 </div>
             </div>
             <div class="label-div">
-                <h1>FacebookManagement</h1>
+            <h1 style={{whiteSpace: "nowrap"}}>Facebook Management</h1>
             </div>
             <div class="srv-row-div-one">
                 <img src={require('../../assets/images/box.png')} alt="" />
                 <div class="sr-content-div">
                     <ul>
-                        <li><i>-</i> For Up To 2 Social Media Platforms</li>
-                        <li><i>-</i>3 Post Per Week</li>
-                        <li><i>-</i>All Images, Graphics And CopyWriting Included. Featurd Videos Available</li>
-                        <li><i>-</i>Messaging And Comment Moderation Included</li>
-                        <li><i>-</i>Boosted Post Add-One Available</li>
+                        <li> For Up To 2 Social Media Platforms</li>
+                        <li>3 Posts Per Week</li>
+                        <li>All Images, Graphics And CopyWriting Included. Featured Videos Available</li>
+                        <li>Messaging And Comment Moderation Included</li>
+                        <li>Boosted Post Add-One Available</li>
                     </ul>
                 </div>
             </div>
             <div class="label-div">
-                <h1>DigitalAdvertisementSuport</h1>
+            <h1 style={{whiteSpace: "nowrap"}}>Digital Advertisement Support</h1>
             </div>
         </div>
     </section>

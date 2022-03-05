@@ -6,6 +6,8 @@ import axios from 'axios';
 import { useHistory,Link} from "react-router-dom";
 import { FcLeftDown,FcRightUp } from "react-icons/fc";
 import dateFormat from 'dateformat';
+import Parallax from 'react-rellax'
+
 var sessionstorage = require('sessionstorage');
 
 
@@ -58,7 +60,12 @@ export default function Index() {
   return (
   
   <div>
+<Parallax speed={5}>
+        <img src={require('../../assets/images/Rectangle 40.png')} alt="bg" width='100%' height={250} style={{
+              objectFit:'cover'
+          }}/>
 
+       </Parallax>
                         <Modal.Dialog className='modal-msg'>
                             <Modal.Header >
                                 <Modal.Title style={{color:'black'}}>General Enquiry </Modal.Title>

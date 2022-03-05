@@ -111,6 +111,13 @@ export default function Index() {
     }
 
   return (
+      <>
+     <Parallax speed={5}>
+     <img src={require('../../assets/images/Rectangle 40.png')} alt="bg" width='100%' height={250} style={{
+           objectFit:'cover'
+       }}/>
+
+    </Parallax>
 
     <div className='margintop-27 mx-5 my-5'>
        
@@ -158,6 +165,7 @@ export default function Index() {
         </Container>
         <ToastContainer />
     </div>
+    </>
   );
 
     // function signout()
