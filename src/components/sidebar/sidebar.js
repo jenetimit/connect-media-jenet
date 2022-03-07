@@ -39,6 +39,9 @@ export default function Sidebar() {
                             <li>
                                 <Link smooth className="sd-link" to="#About1">About Us</Link>
                             </li>
+                            {/* <li>
+                                <Link smooth className="sd-link" to="#faq1">FAQ</Link>
+                            </li> */}
                             <li>
                               <Link smooth className="sd-link" to="#whyconnect1">Why Connect</Link>
                             </li>
@@ -52,10 +55,13 @@ export default function Sidebar() {
                               <Link smooth className="sd-link" to="#package1">Packages</Link>
                             </li>
                             <li>
+                              <Link  className="sd-link" to="/faq">FAQ</Link>
+                            </li>
+                            <li>
                               <Link smooth className="sd-link" to="#contact1">Contact</Link>
                             </li>
                             {/* <li><a className="sd-link">Contact</a></li> */}
-                            <li><a className="sd-link">Admin</a></li>
+                            {/* <li><a className="sd-link">Admin</a></li> */}
                         </ul>
                     </div>
                 </div>

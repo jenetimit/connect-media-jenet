@@ -1,3 +1,4 @@
+
 .statistics-main-div{
     background-color: #000914;
     padding: 5%;
@@ -10,6 +11,7 @@
 }
 .statistics-main-div h2{
     color: white;
+    font-weight: 100;
     font-size: 4vw;
     padding: 0%;
     margin: 0%;
@@ -18,38 +20,79 @@
 
 .statistics-main-div h4{
     color: white;
+    font-weight: 100;
     font-size: 2vw;
     padding: 0%;
     margin: 0%;
 }
 
+@media (max-width: 700px){
+    .statistics-main-div h4{
+        font-size: 15px;
+    }
+}
+
 .statistics-main-div p{
     color: white;
     font-size: 1.5vw;
+    margin-bottom: 2vw;
+}
+
+@media (max-width: 700px){
+    .statistics-main-div p{
+        font-size: 12px;
+    }
 }
 
 
 .statistics-row{
     display: flex;
-    height: 100vh;
     justify-content: space-between;
     align-items: center;
 }
 
+@media (max-width:700px){
+    .statistics-row{
+        flex-direction: column;
+    }
+     
+}
+
+.line-chrt-div{
+    flex: 1;
+}
+
+.svg-diagram-div{
+    flex: 1;
+}
+
+.svg-diagram-div{
+    flex: 1;
+    padding: 2vw;
+}
+
 .line-chart{
-    padding: 2%;
+    padding: 2vw;
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
     border-radius: 15px;
     background: rgba(255, 255, 225, 0.1);
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-left: 1px solid rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(5px);
-    width: 45%;
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+
 }
+
+@media(max-width:700px){
+    .line-chart{
+        width: 80vw;
+        height: 30vw;
+        margin-top: 5vw;
+        margin-bottom: 5vw;
+        padding-top: 5vw;
+    } 
+}
+
+
 
 .line-wrap {
     position: relative;
@@ -58,11 +101,13 @@
 
 .line-progess-bar{
     width: 0%;
-    height: 40px;
+    height: 20px;
     background-color: blue;
     padding: 2px;
     border-radius: 10px;
     opacity: 0;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
 }
 
 .statistics-row.anim .line-progess-bar{
@@ -97,7 +142,6 @@
 
 .line-chart .line-text{
     color: white;
-
     font-size: 2vw;
     display: flex;
     justify-content: space-evenly;
@@ -106,3 +150,12 @@
     padding: 0;
     margin: 0;
 }
+
+@media (max-width:700px){
+    .line-chart .line-text h5{
+        font-size: 12px;
+    } 
+}
+
+
+

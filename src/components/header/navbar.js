@@ -52,6 +52,7 @@ export default function Navbar(props,id) {
 
                                 <Dropdown.Menu style={{border: 'none'}}>
                                     <Dropdown.Item onClick={profileInfo}>Modify Profile</Dropdown.Item>
+                                    {/* <Dropdown.Item href="/faq">FAQ</Dropdown.Item> */}
                                     <Dropdown.Item href="/orders">My Orders</Dropdown.Item>
                                     <Dropdown.Item href="/messages">Messages</Dropdown.Item>
                                     <Dropdown.Item href="/gene-enquiry">General Enquiry</Dropdown.Item>

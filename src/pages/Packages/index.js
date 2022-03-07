@@ -19,7 +19,7 @@ export default function Index() {
     return (
         <>
         <section id='package1'>
-            <div class="main-pakages-div">
+            {/* <div class="main-pakages-div">
                 <div class="pakage-div-one">
                     <h1>Packages</h1>
                 </div>
@@ -37,7 +37,6 @@ export default function Index() {
                         <li><i class="fa fa-check-circle"></i>Boosted Post Add-On Available</li>
                     </ul>
                     </div>
-                    {/* <button onClick={()=>history.push('/login/standard-list')}>Buy</button> */}
 
                     {sessionstorage.getItem('token') ===null ?(
                     <button onClick={()=>history.push('/login/standard-list')}>Buy</button>
@@ -71,7 +70,93 @@ export default function Index() {
                 </div>
                 <div class="pakage-div-four"></div>
             </div>
-        </section>
+        </section> */}
+
+
+        <section>
+        <div class="main-pakages-div">
+            <div class="pakage-div-one">
+                <h1>Packages</h1>
+            </div>
+            <div class="package-wrap pakage-div-two">
+                <div class="package">
+                    <div class="img-div">
+                        <h4>Standard SMM Packages</h4>
+                        <img src={require('../../assets/images/pakage_card-1.png')} alt="" />
+                    </div>
+                    <div class="content-div">
+                        
+                        <ul className='bullets'>
+                            <li><i class="fa fa-check-circle"></i> For Up To 2 Social Media Platforms</li>
+                            <li><i class="fa fa-check-circle"></i>3 Post Per Week</li>
+                            <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featured
+                                Videos Available</li>
+                            <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
+                            <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                        </ul>
+                    </div>
+                    {sessionstorage.getItem('token') !==null ?(
+                    <button onClick={()=>history.push('/standard-list')}>Buy</button>
+                    ):(
+                    <button onClick={()=>history.push('/registration')}>Register</button>
+
+                    )
+                    }
+                </div>
+            </div>
+            <div class="package-wrap pakage-div-three">
+                <div class="package">
+                    <div class="img-div">
+                        <h4>Custom SMM Packages</h4>
+                        <img src={require('../../assets/images/pakge_card.png')} alt="" />
+                    </div>
+                    <div class="content-div">
+                        <ul className='bullets'>
+                            <li><i class="fa fa-check-circle"></i>For Up To 2 Social Media Platforms</li>
+                            <li><i class="fa fa-check-circle"></i>3 Post Per Week</li>
+                            <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featured
+                                Videos Available</li>
+                            <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
+                            <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                        </ul>
+                    </div>
+                    {sessionstorage.getItem('token') !==null ?(
+                    <button onClick={()=>history.push('/standard-list')}>Buy</button>
+                    ):(
+                    <button onClick={()=>history.push('/registration')}>Register</button>
+
+                    )
+                    }
+                </div>
+            </div>
+            <div class="package-wrap pakage-div-four">
+                <div class="package">
+                    <div class="img-div">
+                        <h4>Custom SEO Packages</h4>
+                        <img src={require('../../assets/images/pakge_card.png')} alt="" />
+                    </div>
+                    <div class="content-div">
+                        <ul className='bullets'>
+                            <li><i class="fa fa-check-circle"></i>For Up To 2 Social Media Platforms</li>
+                            <li><i class="fa fa-check-circle"></i>3 Post Per Week</li>
+                            <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featured
+                                Videos Available</li>
+                            <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
+                            <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                        </ul>
+                    </div>
+                    {sessionstorage.getItem('token') !==null ?(
+                    <button onClick={()=>history.push('/standard-list')}>Buy</button>
+                    ):(
+                    <button onClick={()=>history.push('/registration')}>Register</button>
+
+                    )
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
         </>
     )
     

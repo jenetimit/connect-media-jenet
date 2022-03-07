@@ -18,9 +18,11 @@ export default function index() {
     <>
     <Home/>
     <About />
+    <Pillars />
     <Whyconnect />
     <Statistics />
     <Service />
+    <Campaign />
     <Package />
     <Contact />
     </>

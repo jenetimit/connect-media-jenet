@@ -37,6 +37,7 @@ import Whyconnect from '../../src/pages/About/whyconnect'
 import Pillars from '../../src/pages/About/pillars'
 import Statistics from '../../src/pages/statistics/index';
 import Requets from '../pages/pendingRequest/Index'
+import Faq from '../../src/pages/faq/index'
 
 import {
     BrowserRouter as Router,
@@ -50,7 +51,7 @@ export default function Index() {
     let data = useLocation();
 
     return (
-            
+            <>
             <div>
 
             <Switch>
@@ -64,6 +65,10 @@ export default function Index() {
                     
                     <Registration name={data.name}/>
 
+                </Route>
+
+                <Route path='/faq'>
+                    <Faq />
                 </Route>
 
                     <Route exact path='/pkg-details'>
@@ -195,11 +200,13 @@ export default function Index() {
                 <Route exact path="/package1" component={Package}/>
                 <Route exact path="/statistics1" component={Statistics}/>
                 <Route exact path="/contact1" component={Contact}/>
+                <Route exact path="/faq1" component={Faq}/>
 
 
             </Switch>
             <Footer />
-            
         </div>
+        </>
+
     )
 }

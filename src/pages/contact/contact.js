@@ -34,7 +34,7 @@ export default function Contact() {
 
                     
                     <h6 className='heading'>Connect Media</h6>
-                    <p className='para-content'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris volutpat sapien eget sapien cursus, quis pulvinar lectus dictum. Nullam et sem ex. Vestibulum eu lacinia nibh. Maecenas convallis facilisis egestas. Sed consectetur augue neque, ut mattis purus fermentum et. Morbi nec condimentum dolor, sed aliquam metus.</p>
+                    <p className='para-content'>For enquires, you can contact us using any one of the following methods</p>
 
                     <div style={{marginTop:'2rem'}}>
 
