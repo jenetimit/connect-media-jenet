@@ -129,7 +129,7 @@ export default function index() {
                         <li><i class="fa fa-check-circle"></i>3 Post Per Week</li>
                         <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featured Videos Available</li>
                         <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
-                        <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                        <li><i class="fa fa-check-circle"></i>Boosted Post Add-On Available</li>
                     </ul>
                 </div>
             </div>
@@ -144,7 +144,7 @@ export default function index() {
                         <li><i class="fa fa-check-circle"></i>3 Post Per Week</li>
                         <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featured Videos Available</li>
                         <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
-                        <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                        <li><i class="fa fa-check-circle"></i>Boosted Post Add-On Available</li>
                     </ul>
                 </div>
             </div>
@@ -163,7 +163,7 @@ export default function index() {
                         <li><i class="fa fa-check-circle"></i>3 Post Per Week</li>
                         <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featured Videos Available</li>
                         <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
-                        <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                        <li><i class="fa fa-check-circle"></i>Boosted Post Add-On Available</li>
                     </ul>
                 </div>
             </div>
@@ -178,7 +178,7 @@ export default function index() {
                         <li><i class="fa fa-check-circle"></i>3 Post Per Week</li>
                         <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featured Videos Available</li>
                         <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
-                        <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                        <li><i class="fa fa-check-circle"></i>Boosted Post Add-On Available</li>
                     </ul>
                 </div>
             </div>

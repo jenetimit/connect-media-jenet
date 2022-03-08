@@ -36,8 +36,11 @@ import Contact from '../../src/pages/contact/contact'
 import Whyconnect from '../../src/pages/About/whyconnect'
 import Pillars from '../../src/pages/About/pillars'
 import Statistics from '../../src/pages/statistics/index';
-import Requets from '../pages/pendingRequest/Index'
-import Faq from '../../src/pages/faq/index'
+import Requets from '../pages/pendingRequest/Index';
+import Faq from '../../src/pages/faq/index';
+import PendingReq from '../../src/pages/pendingRequest/pendingRequest'
+import Forgotpwd from '../../src/pages/forgotPassword/Index'
+import Forgotpwd1 from '../../src/pages/forgotPassword/forgot1'
 
 import {
     BrowserRouter as Router,
@@ -67,7 +70,7 @@ export default function Index() {
 
                 </Route>
 
-                <Route path='/faq'>
+                <Route exact path='/faq'>
                     <Faq />
                 </Route>
 
@@ -105,6 +108,18 @@ export default function Index() {
                 <Route exact path='/reset_password'>
 
                     <ResetPassword />
+
+                    </Route>
+
+                    <Route exact path='/forgot_password'>
+
+                    <Forgotpwd />
+
+                    </Route>
+
+                    <Route exact path='/forgot_password1'>
+
+                    <Forgotpwd1 />
 
                     </Route>
 
@@ -177,9 +192,9 @@ export default function Index() {
                     
                 </Route>
 
-                {/* <Route exact path='/order-view'>
-                    <EachOrder order={data.order} />
-                </Route> */}
+                <Route exact path='/my-requests'>
+                    <PendingReq />
+                </Route>
 
                 <Route exact path='/related-msgs'>
                     <Relatedmsgs data={data.data}/>
@@ -201,6 +216,7 @@ export default function Index() {
                 <Route exact path="/statistics1" component={Statistics}/>
                 <Route exact path="/contact1" component={Contact}/>
                 <Route exact path="/faq1" component={Faq}/>
+                <Route exact path="/campaigns1" component={Campaign}/>
 
 
             </Switch>

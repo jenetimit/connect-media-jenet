@@ -119,10 +119,14 @@ export default function Index() {
 
     </Parallax>
 
-    <div className='margintop-27 mx-5 my-5'>
+    <div className='margintop-27 '>
+
+        
        
         <Container >
-            <Parallax speed={-3}>
+        
+            <Parallax speed={5}>
+            <h2 className='my-5 text-center'>My Profile</h2>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                         <Row>
                             <Col sm={12} md={12} xl={6} xxl={6}>  <input placeholder="Name" type="text"  {...register("name" , { required: true })} className='textbox' defaultValue={customerInfo.cust_name} /> </Col>

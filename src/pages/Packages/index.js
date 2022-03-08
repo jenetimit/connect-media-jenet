@@ -92,14 +92,17 @@ export default function Index() {
                             <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featured
                                 Videos Available</li>
                             <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
-                            <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                            <li><i class="fa fa-check-circle"></i>Boosted Post Add-On Available</li>
                         </ul>
                     </div>
-                    {sessionstorage.getItem('token') !==null ?(
-                    <button onClick={()=>history.push('/standard-list')}>Buy</button>
+                    {sessionstorage.getItem('token') ===null ?(
+                        <>
+                    <button onClick={()=>redirecttoList("std")}>Register</button>
+                    </>
                     ):(
-                    <button onClick={()=>history.push('/registration')}>Register</button>
-
+                        <>
+                    <button onClick={()=>history.push('/standard-list')}>Buy</button>
+                    </>
                     )
                     }
                 </div>
@@ -117,19 +120,22 @@ export default function Index() {
                             <li><i class="fa fa-check-circle"></i>All Images, Graphics And CopyWriting Included. Featured
                                 Videos Available</li>
                             <li><i class="fa fa-check-circle"></i>Messaging And Comment Moderation Included</li>
-                            <li><i class="fa fa-check-circle"></i>Boosted Post Add-One Available</li>
+                            <li><i class="fa fa-check-circle"></i>Boosted Post Add-On Available</li>
                         </ul>
                     </div>
-                    {sessionstorage.getItem('token') !==null ?(
-                    <button onClick={()=>history.push('/standard-list')}>Buy</button>
+                    {sessionstorage.getItem('token') ===null ?(
+                        <>
+                    <button onClick={()=> redirecttoList("custom")}>Register</button>
+                    </>
                     ):(
-                    <button onClick={()=>history.push('/registration')}>Register</button>
-
+                        <>
+                    <button onClick={()=>history.push('/customized-list')}>Buy</button>
+                    </>
                     )
                     }
                 </div>
             </div>
-            <div class="package-wrap pakage-div-four">
+            {/* <div class="package-wrap pakage-div-four">
                 <div class="package">
                     <div class="img-div">
                         <h4>Custom SEO Packages</h4>
@@ -153,11 +159,26 @@ export default function Index() {
                     )
                     }
                 </div>
-            </div>
+            </div> */}
         </div>
     </section>
     </section>
         </>
     )
+
+    function redirecttoList(type)
+    {
+        
+
+        if(type === "std")
+        {
+            sessionstorage.setItem("list","standard-list");
+            history.push('/login/standard-list');
+        }
+        else{
+            sessionstorage.setItem("list","customized-list");
+            history.push('/login/customized-list');
+        }
+    }
     
 }

@@ -5,6 +5,8 @@ import { Url } from '../../GLOBAL/global';
 import axios from 'axios';
 import { useHistory,Link} from "react-router-dom";
 import dateFormat from 'dateformat';
+import Parallax from 'react-rellax'
+import { toast, ToastContainer } from 'react-toastify';
 
 var sessionstorage = require('sessionstorage');
 
@@ -35,7 +37,17 @@ export default function EachOrder(props) {
   return (
   
     <div>
+
+<Parallax speed={5}>
+            <img src={require('../../assets/images/Rectangle 40.png')} alt="bg" width='100%' height={250} style={{
+              objectFit:'cover'
+          }}/>
+
+       </Parallax>
+
 <Container >
+
+        <h2 className='text-center my-5'>My Orders</h2>
         <Row >
             <Col sm={12} md={2} xl={2} xxl={2}>
                
@@ -47,7 +59,7 @@ export default function EachOrder(props) {
                       
                       
 
-                        <Card className='text'>
+                        <Card className='text my-5'>
 
 
                             { _type === "camp" || _type === "event"  ? (
@@ -80,7 +92,7 @@ export default function EachOrder(props) {
                                     (
                                         
                                         <Card.Body>
-                                           {console.log("else ",order)}
+                                           {/* {console.log("else ",order)} */}
                                           
                                         <p>{order.order.order_item} {' - '} {order.PACKAGE.packages_type === "STD" ? "STANDRAD PACKAGE":"CUSTOMIZED PACKAGE"}</p>
                                         <p>Order Id : {order.order.order_id}</p>
@@ -107,7 +119,7 @@ export default function EachOrder(props) {
                                         <p>Selected Months : {order.PACKAGE.months}</p>
                                         <p>Order Status : {order.PACKAGE.packages_status}</p>
 
-                                        <Button variant="dark" onClick={()=>sent()}>sent</Button>
+                                        {/* <Button variant="dark" onClick={()=>sent()}>sent</Button> */}
                                            
                                         </Card.Body>
                                     )
@@ -126,7 +138,7 @@ export default function EachOrder(props) {
                         <Modal.Dialog className='modal-msg'>
                             <Modal.Header >
                                 <Modal.Title style={{color:'black'}}>Sent </Modal.Title>
-                               <p style={{color:'black'}}>title : {order.plan.camp_title}</p>
+                               <p style={{color:'black'}}>title : {order.plan.camp_title?order.plan.camp_title:order.plan.event_title}</p>
                                 {/* {title==="replay"?"Replay To Messages" :" Sent Message"} */}
                             </Modal.Header>
 
@@ -139,7 +151,7 @@ export default function EachOrder(props) {
                                 
                                 <Button variant="secondary" onClick={closebtn}>Close</Button>
                                 
-                                   <Button variant="dark" onClick={()=>sentmessage()}>sent</Button>
+                                <Button variant="dark" onClick={()=>sentmessage()}>sent</Button>
                                 
                                 
                             </Modal.Footer>
@@ -155,6 +167,8 @@ export default function EachOrder(props) {
                 
             </Col>
         </Row>
+
+        <ToastContainer />
 
     </Container>
 </div>
@@ -203,7 +217,8 @@ export default function EachOrder(props) {
         .then(function (response) {
             //handle success
             console.log(response.data);
-            history.push( { pathname: '/orders'});
+            toast.success("Message Sent !!",{autoClose:3000})
+            setTimeout(() => history.push( { pathname: '/orders'}),3000) 
             
         })
         .catch(function (response) {

@@ -29,6 +29,22 @@ a
     
 }
 
+.green
+{
+    color: darkgreen;
+}
+
+.warning
+{
+    color: #F1C40F;
+}
+
+.nav-count
+{
+    color: red;
+    margin-left: 25%;
+}
+
 .bold-text
 {
     font-weight: 600;
@@ -48,6 +64,13 @@ a
     justify-content: space-between;
 }
 
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .para-content
 {
     font-size: 18px;
@@ -58,6 +81,16 @@ a
 .icon
 {
     font-size: 30px;
+}
+
+.font-30
+{
+    font-size: 30px;
+}
+
+.font-20
+{
+    font-size: 20px;
 }
 
 .media-icon

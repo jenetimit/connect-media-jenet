@@ -22,7 +22,7 @@ export default function Index() {
     let history  =new useHistory();
 
     let d = window.location.pathname.slice(7);
-    console.log("current url : ",d);
+    console.log("current url : ",sessionstorage.getItem('camp'));
     
     // setValue(d);
 
@@ -51,37 +51,62 @@ export default function Index() {
         headers: headers
         })
         .then(function (response) {
-            //handle success
-            console.log(response.data.token);
+          //handle success
+          // console.log(response.data.message);
+          
+
+          
+
+          sessionstorage.setItem("token",response.data.token);
+          sessionstorage.setItem("customerId",response.data.id);
+
+          if((response.data.message === 'loggedin') && ( sessionstorage.getItem('camp') === ('events-creation' || 'staticPosts' || 'million-posts')) )
+          {
+            // window.location.href= siteUrl+'/'+sessionstorage.getItem('camp');
+            console.log("url", window.location.href= siteUrl+'/'+sessionstorage.getItem('camp'))
+            // history.go(0)
+           
+          }
+
+          if(response.data === "Email Not verified")
+          {
+            toast.warning("Verify EmailId !");
+            history.push('/login')
+          }
+          
+         
+          
+          if(response.data.message !== 'loggedin')
+          {
+            console.log(" no home");
             
+          }
+          else if((response.data.message === 'loggedin') && ( sessionstorage.getItem('list')=== ('standard-list' || 'customized-list')) )
+          {
+            history.push('/'+sessionstorage.getItem('list'));
+            // history.go(0)
+            console.log(" package list");
+          }
+          else if((response.data.message === 'loggedin') && (sessionstorage.getItem('request') !== null) )
+          {
+            window.location.href= siteUrl+sessionstorage.getItem('request');
+            // history.go(0)
+            console.log("request url");
 
-            if(response.data === "Email Not verified")
-            {
-              toast.warning("Verify EmailId !");
-              history.push('/login')
-            }
-            else
-            {
-              sessionstorage.setItem("token",response.data.token);
-              sessionstorage.setItem("customerId",response.data.id);
-
-              if(sessionstorage.getItem('request') !== null)
-              {
-                window.location.href= siteUrl+sessionstorage.getItem('request');
-              }
-
-              history.push('/'+window.location.pathname.slice(7));
-              history.go(0)
-             
-              
-            }
-            
-        })
-        .catch(function (response) {
-            //handle error
-            console.log(response);
-        });
-
+          }
+          else{
+            history.push('/home')
+            history.go(0)
+            console.log(" home");
+          }
+          
+        
+          
+      })
+      .catch(function (response) {
+          //handle error
+          console.log(response);
+      });
     
     }
 
@@ -138,7 +163,7 @@ export default function Index() {
 
                         <Row align="center" >
                          
-                          <Link to='/reset_password'>forget password</Link>
+                          <Link to='/forgot_password'>forgot password</Link>
                         </Row>
             
                       

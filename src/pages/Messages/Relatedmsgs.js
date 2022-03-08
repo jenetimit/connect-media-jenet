@@ -5,21 +5,26 @@ import '../../style/messages.scss';
 import { Container,Row,Col,Table,Button,Modal } from 'react-bootstrap';
 import dateFormat from 'dateformat';
 import { FcLeftDown,FcRightUp } from "react-icons/fc";
+import Parallax from 'react-rellax'
+import { useHistory} from "react-router-dom";
 var sessionstorage = require('sessionstorage');
 
 export default function Relatedmsgs(props) {
 
-    const[relatedMsg,setRelatedMsg] = React.useState([]);
+    const[relatedMsg,setRelatedMsg] = React.useState([{}]);
     const msg = props.data;
+    console.log("msg",msg);
     
     const [modelmsg,setmodelmsg] = React.useState(false);
     const [length,setLength] = React.useState(0);
+
+    let history = useHistory();
 
     useEffect(() => {
 
         getDatas();
 
-      },[relatedMsg!== null]);
+      },[]);
 
 
 
@@ -47,7 +52,15 @@ export default function Relatedmsgs(props) {
 
   return (
   <div>
+
+        <Parallax speed={5}>
+            <img src={require('../../assets/images/Rectangle 40.png')} alt="bg" width='100%' height={250} style={{
+              objectFit:'cover'
+          }}/>
+
+       </Parallax>
         <Container>
+            <h2 className='text-center my-5'>Messages</h2>
             <Row >
                 <Col sm={12} md={2} xl={2} xxl={2}>
                    
@@ -58,49 +71,53 @@ export default function Relatedmsgs(props) {
                  
                         <div className='view-msg'>
                             {/* <p>Purchased Items</p> */}
-                            
-                            <Table striped bordered hover style={{backgroundColor:'aqua'}} className="text-center">
-                                <thead>
+                            {length !== 0 ? ( 
+                            <Table striped bordered hover style={{backgroundColor:'azure'}} className="text-center mt-5">
+                               
+                                    <thead>
                                     <tr>
                                         <th>Date</th>
                                         <th>sent/recieve</th>
                                         <th>Message</th>
+                                        <th>Status</th>
                                        
                                         {/* <th>Selected Months</th> */}
                                     </tr>
                                 </thead>
+                               
 
                                 <tbody>
                                   
-
-                                  {length > 0 ? 
-                                    relatedMsg.map((data, idx) => (
+                              
+                                  
+                                    {relatedMsg.map((data, idx) => (
                                     // console.log(data)
                                
-                                    <tr key={idx}>
+                                        <tr key={idx}>
 
-                                        <td>{data.created_at !== null? dateFormat(data.created_at, "mmmm dS, yyyy"):""}</td>
-                                      
-                                      {/* msg_type =="S" from admin side */}
-                                      
-                                        <td>{data.msg_type===("R"||"I")?<FcRightUp/>:<FcLeftDown/>}</td>
-
-                                        <td>{data.msg_user}</td>
+                                            <td>{ dateFormat(data.created_at, "mmmm dS, yyyy")}</td>
                                         
-                                        <td>
-                                        <Button variant="dark" type='button' onClick={() => viewall(data)}>view all</Button><br></br>
-                                    
-                                        </td>
-                                    </tr>  
-                                   
+                                            {/* msg_type =="S" from admin side */}
+                                        
+                                            <td>{data.msg_type===("R"||"I")?<FcRightUp/>:<FcLeftDown/>}</td>
+
+                                            <td>{data.msg_user}</td>
+
+                                            <td>{data.msg_status}</td>
+                                            
+                                            
+                                        </tr>  
+                                   ))}
                                   
                                        
-                                    )) : <p className='text-center'>No messages</p>}
-        
+                                   
                                     
                                 </tbody>
                                 
                             </Table>
+                          ) : ( <><p className='text-center bold-text'>No messages send yet</p> </>)
+                        }   
+
                         </div>
                  
 
@@ -146,14 +163,7 @@ export default function Relatedmsgs(props) {
 
     
 
-    function viewall(data)
-    {
-        // setPmsg(data);
-        // setmodelmsg(true);
-        
-        console.log("pmsg",data);
-        
-    }
+    
 
     function ReplayToMsg()
     {
@@ -164,6 +174,7 @@ export default function Relatedmsgs(props) {
 
         var formdata = new FormData();
 
+        
 
 
         // formdata.append("customer_id",customer_id);

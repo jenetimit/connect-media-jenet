@@ -6,7 +6,10 @@ import axios from 'axios';
 import { useHistory,Link} from "react-router-dom";
 import { FcLeftDown,FcRightUp } from "react-icons/fc";
 import dateFormat from 'dateformat';
-import Parallax from 'react-rellax'
+import Parallax from 'react-rellax';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 var sessionstorage = require('sessionstorage');
 
@@ -165,6 +168,8 @@ export default function Index() {
                 </Col>
             </Row>
 
+        
+            <ToastContainer/>
         </Container>
 
   </div>);
@@ -204,6 +209,7 @@ export default function Index() {
         .then(function (response) {
             //handle success
             console.log(response.data);
+            toast.success("message sent !!")
             getDatas();
             
         })

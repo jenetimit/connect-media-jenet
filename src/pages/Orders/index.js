@@ -100,26 +100,28 @@ export default function Index() {
        </Parallax>
 
     <Container className='py-5 '>
+
+      <h2 className='text-center my-5'>My Orders</h2>
         <Row className='py-5'>
             
 
             <Col sm={12} md={12} xl={12} xxl={12}>
 
               <div className='table-title'>
-                <div className='table-icons'>
+                <div onClick={()=>events()} className='table-icons'>
                   <img src={require('../../assets/images/Group 338.png')} alt="events" width={150} height={150} id="icon1"  style={{objectFit:'contain'}} />
-                  <p onClick={()=>events()} id="event">EVENTS</p>
+                  <p  id="event">EVENTS</p>
                 </div>
 
-                <div className='table-icons'>
+                <div className='table-icons' onClick={()=>camp()}>
                   <img src={require('../../assets/images/OBJECTS.png')} alt="events" width={150} height={150} id="icon2" style={{objectFit:'contain'}} />
-                  <p id='campaign' onClick={()=>camp()}>CAMPAIGNS</p>
+                  <p id='campaign' >CAMPAIGNS</p>
                 </div>
                
 
-                <div className='table-icons'>
+                <div className='table-icons' onClick={()=>pkg()}>
                   <img src={require('../../assets/images/Group 338.png')} alt="events" width={150} height={150} id="icon3" />
-                  <p id='pkg' onClick={()=>pkg()}>PACKAGES</p>
+                  <p id='pkg' >PACKAGES</p>
                 </div>
                
                 
@@ -128,6 +130,7 @@ export default function Index() {
                     <div className='view-msg'>
                       
                        {plans &&
+                       
                         <Table striped bordered hover style={{backgroundColor:'azure'}} className="text-center">
                             <thead>
                                 <tr>
@@ -244,7 +247,7 @@ export default function Index() {
 
 
                   {packages &&
-                        <Table striped bordered hover style={{backgroundColor:'azure'}} className="text-center col-gap">
+                        <Table striped bordered hover style={{backgroundColor:'azure'}} >
                             <thead>
                                 <tr >
                                     <th >Ordered Date</th>
@@ -298,10 +301,10 @@ export default function Index() {
                                     </td>
                                    
                                       <td>{data.PACKAGE.packages_type !== null?data.PACKAGE.packages_type:''}</td>
-                                    <td><a href={data.order.drive_id}>{data.order.drive_id}</a></td>
+                                    <td><a href={data.order.drive_id}>click here</a></td>
 
                                     <td>{data.PACKAGE.packages_cost}</td>
-                                    <td>{data.PACKAGE.packages_status}</td>
+                                    <td>{data.PACKAGE.packages_status === "Success"?(<p className='green bold-text'>Success</p>):(<p className='bold-text warning'>{data.PACKAGE.packages_status}</p>)}</td>
                                    
                                     <td>
                                         

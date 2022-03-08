@@ -7,14 +7,13 @@ import dateFormat from 'dateformat';
 import { useHistory,Link} from "react-router-dom";
 import { FcLeftDown,FcRightUp } from "react-icons/fc";
 import Parallax from 'react-rellax'
-
 var sessionstorage = require('sessionstorage');
 
 export default function Index() {
     let history = useHistory();
     const [length,setLength] = React.useState(0);
     
-    const [allmessages,setAlmessages]= React.useState([]);
+    const [allmessages,setAlmessages]= React.useState([{}]);
    
    
 
@@ -32,10 +31,11 @@ export default function Index() {
 
             // get all messages where msg_type = "I"
 
-            await axios.get(Url+'getmessages', { headers: { Authorization: `Bearer ${token}` } ,params:{customer_id: customer_id} })
+            await axios.get(Url+'getmessages', { headers: { Authorization: `Bearer ${token}`,'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Methods': 'get' } ,params:{customer_id: customer_id} })
             .then(response => {
                 // If request is good...
-                // console.log(response.data.data);
+                console.log(response.data.data);
                 setAlmessages(response.data.data);
                 setLength(allmessages.length)
             })
@@ -51,34 +51,36 @@ export default function Index() {
       <>      
       
     <div>
-        
-     <Parallax speed={5}>
+
+    <Parallax speed={5}>
         <img src={require('../../assets/images/Rectangle 40.png')} alt="bg" width='100%' height={250} style={{
               objectFit:'cover'
           }}/>
 
        </Parallax>
         <Container>
-            <Row >
+            <h2 className='text-center my-5'>Messages</h2>
+            <Row  className='my-5 '>
                 <Col sm={12} md={2} xl={2} xxl={2}>
                    
                 </Col>
 
-                <Col sm={12} md={8} xl={8} xxl={8}>
+                <Col sm={12} md={8} xl={8} xxl={8} >
                  
                  
-                        <div className='view-msg'>
+                        <div className='view-msg mb-5'>
                             {/* <p>Purchased Items</p> */}
 
 
-                        
+                            {length >0 ?(
                             
-                            <Table striped bordered hover style={{backgroundColor:'azure'}} className="text-center">
+                            <Table striped bordered hover className="text-center" style={{backgroundColor:'azure'}}>
                                 <thead>
                                     <tr>
                                         <th>Date</th>
                                         <th>sent/recieve</th>
                                         <th>Message</th>
+                                        <th>Status</th>
                                        
                                         {/* <th>Selected Months</th> */}
                                     </tr>
@@ -86,9 +88,9 @@ export default function Index() {
 
                                 <tbody>
 
-                                  {length >0 ? 
+                                 
 
-                                    allmessages.map((data, idx) => (
+                                    {allmessages.map((data, idx) => (
                                    
                                
                                     <tr key={idx}>
@@ -98,6 +100,7 @@ export default function Index() {
                                         <td>{data.msg_type===("I"||"R")?<FcRightUp/>:<FcLeftDown/>}</td>
 
                                         <td>{data.msg_user}</td>
+                                        <td>{data.msg_status}</td>
                                         
                                         <td>
                                         <Button variant="dark" type='button' onClick={() => viewall(data)}>view all</Button><br></br>
@@ -107,12 +110,13 @@ export default function Index() {
                                    
                                   
                                        
-                                    )) : <p className='text-center'>No Messages</p>}
+                                    ))} 
         
                                     
                                 </tbody>
                                 
                             </Table>
+                            ):<p className='text-center'>No Messages send yet</p>}
                         </div>
                  
 

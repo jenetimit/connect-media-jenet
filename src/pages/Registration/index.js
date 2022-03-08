@@ -36,7 +36,7 @@ export default function Index(props) {
      formdata.append('password',data.pass2);
      formdata.append('phone',data.phone);
      formdata.append('ministry',data.ministry);
-     formdata.append('address',data.address);
+     formdata.append('address',data.add);
 
      
     
@@ -58,15 +58,17 @@ export default function Index(props) {
             {
               sessionstorage.setItem("token",response.data.token);
               sessionstorage.setItem("customerId",response.data.id);
-              toast.success("Registration Success !");
-              toast.warning("Verify Email Id !");
-              history.push( { pathname: '/login', serviceType: props.name})
+              toast.success("Registration Success ! , Verify Email Id !",{autoClose:3000});
+
+              setTimeout(() => history.push( { pathname: '/login', serviceType: props.name}),3000)
+              
             }
             
 
             if(response.data === "email already exists")
             {
-              toast("Email Already Exists !")
+              toast("Email Already Exists !",{autoClose:3000});
+              setTimeout(() => history.push('/login'),3000)
             }
             
         })

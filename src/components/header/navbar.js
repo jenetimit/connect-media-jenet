@@ -14,7 +14,8 @@ import '../../style/button.scss'
 import { animateScroll as scroll } from "react-scroll";
 import { HashLink as Link} from 'react-router-hash-link';
 import { FaUserTie }  from "react-icons/fa";
-
+import axios from 'axios';
+import { Url } from '../../GLOBAL/global';
 var sessionstorage = require('sessionstorage');
 
 console.log('token is',sessionstorage.getItem('token'));
@@ -31,20 +32,49 @@ const styles = StyleSheet.create({
 export default function Navbar(props,id) {
 
     let history = useHistory();
+    const[orderCount,setOrderCount] =React.useState(0);
+
+    useEffect(() => {
+
+        const token = sessionstorage.getItem("token");
+        const customer_id = sessionstorage.getItem("customerId");
+
+        async function getDatas()
+        {
+            await axios.get(Url+'ordercount', { headers: { Authorization: `Bearer ${token}`,'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Methods': 'get' } ,params:{customer_id: customer_id} })
+            .then(response => {
+                // If request is good...
+                console.log(response.data.count);
+                setOrderCount(response.data.count);
+                // setAlmessages(response.data.data);
+                // setLength(allmessages.length)
+            })
+            .catch((error) => {
+                console.log('error ' + error);
+            });
+        }
+
+        getDatas();
+
+        
+
+      },[]);
+
 
     return (
         <>
       
-            <Container className='navbar'>
+            <section className='navbar'>
                     <img src={require('../../assets/images/logo.png')}  alt='header-logo-img' onClick={()=>home()}/>
                     
                     <div className='center-align'>
 
-                    {/* {sessionStorage.getItem('token')} */}
-                    {sessionStorage.getItem('token') !== null ? (
-                            <>
+                   
                                  
-                            {/* <BsList className='menu-nav' onClick={sidebar}/> */}
+                        
+                            {sessionstorage.getItem('token') !== null ?(
+                                <>
                                <Dropdown>
                                 <Dropdown.Toggle variant="Secondary" id="dropdown-basic" className='menu-btn pointer'>
                                 <FaUserTie size={40} className='menu-nav'/>
@@ -52,37 +82,32 @@ export default function Navbar(props,id) {
 
                                 <Dropdown.Menu style={{border: 'none'}}>
                                     <Dropdown.Item onClick={profileInfo}>Modify Profile</Dropdown.Item>
-                                    {/* <Dropdown.Item href="/faq">FAQ</Dropdown.Item> */}
-                                    <Dropdown.Item href="/orders">My Orders</Dropdown.Item>
+                                    <Dropdown.Item href="/my-requests">My Requets</Dropdown.Item>
+                                    <Dropdown.Item href="/orders">My Orders <span className='nav-count'>{orderCount}</span></Dropdown.Item>
                                     <Dropdown.Item href="/messages">Messages</Dropdown.Item>
                                     <Dropdown.Item href="/gene-enquiry">General Enquiry</Dropdown.Item>
-                                    <Dropdown.Item onClick={signout}>Signout</Dropdown.Item>
+                                   
                                 </Dropdown.Menu>
                             </Dropdown>
-                            
+                            </>
+                            ):(
+                                <></>
+                            )
+                            }
                             <Sidebar />
                               
 
-                            {/* <a href='/sidebar' style={{padding: 10,color: '#fff',backgroundColor: '#000914',borderWidth: 1,borderColor: "#000914",borderRadius: 5}}>MENUBAR</a> */}
+                           
 
-                            </>
-                    ):(
-                        <> 
-                        
-                        <Buttons text='login' click="/login"  style={{borderColor:props.color}} className='button-text px-5'>{props.text}</Buttons>
-                       
-                        <Buttons text='Register'  click="/registration"   style={{borderColor:props.color}} className='button-text px-5'>{props.text}</Buttons>
-
-                        <Sidebar />
-                        
-                        </>
-                    )
-                            }
+                         
+                    
+            
+                    
                     </div>
 
                     
                 
-            </Container>
+            </section>
 
             {/* <Container className='profile_div'>
                 {console.log("hello")}
@@ -98,12 +123,12 @@ export default function Navbar(props,id) {
         history.push('/profile');
     }
 
-    function signout()
-    {
-        sessionstorage.clear();
-        history.push('/login');
-        history.go(0)
-    }
+    // function signout()
+    // {
+    //     sessionstorage.clear();
+    //     history.push('/login');
+    //     history.go(0)
+    // }
 
     function home()
     {

@@ -45,7 +45,7 @@ export default function Index() {
                 if(response.data.data.message === "Password updated successfully.")
                 {
                     toast.success("password reset successfully !!",{autoClose:3000});
-                    setTimeout(() => history.push('/home'),3000);
+                    setTimeout(() => history.push('/login'),3000);
                 }
                 // history.push('/home');
                 
@@ -60,8 +60,6 @@ export default function Index() {
             toast.error('password doesnot match !!',{autoclose:2000});
             setTimeout(() => history.push('/reset_password'),2000);
         }
-
-     
 
     
     }
@@ -78,7 +76,7 @@ export default function Index() {
 
           <Container className='my-5'>
           <Parallax speed={-3}>
-                    <h6 className='heading my-5'>Reset Password</h6>
+                    <h6 className='heading my-5'>forgot Password</h6>
                     
                     
                     <Form onSubmit={handleSubmit(onSubmit)}>

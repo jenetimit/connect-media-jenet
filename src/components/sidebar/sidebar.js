@@ -5,7 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useHistory } from 'react-router-dom';
 import Pillars from '../../pages/About/pillars';
 import { HashLink as Link} from 'react-router-hash-link';
-
+var sessionstorage = require('sessionstorage');
 export default function Sidebar() {
 
   let history = useHistory();
@@ -33,6 +33,24 @@ export default function Sidebar() {
                     </div>
                     <div className="sd-body">
                         <ul>
+
+                        {sessionstorage.getItem('token') === null ? (
+                            <>
+                            <li>
+                                <Link className="sd-link" to="/login">Login</Link>
+                            </li>
+                            <li>
+                                <Link className="sd-link" to="/registration">Register</Link>
+                            </li>
+                            </>
+                          ):(
+                            <>
+                            <li>
+                               <> <a onClick={() => signOut()} className="sd-link">LogOut</a></>
+                            </li>
+                            </>
+                          )
+                          }
                             {/* <li>
                                 <Link smooth className="sd-link" to="#Home1">Home</Link>
                             </li> */}
@@ -50,6 +68,9 @@ export default function Sidebar() {
                             </li>
                             <li>
                               <Link smooth className="sd-link" to="#service1">Services</Link>
+                            </li>
+                            <li>
+                              <Link smooth className="sd-link" to="#campaigns1">Campaigns</Link>
                             </li>
                             <li>
                               <Link smooth className="sd-link" to="#package1">Packages</Link>
@@ -73,5 +94,12 @@ export default function Sidebar() {
   )
   function gotoabout(){
     <Pillars />
+  }
+
+  function signOut()
+  {
+    sessionstorage.clear();
+    history.push('/login');
+    history.go(0)
   }
 }
