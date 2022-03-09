@@ -29,6 +29,7 @@ export default function StandardList() {
     const [QueAns] = React.useState([]);
     const [pkg_id,setPkgId] = React.useState(0);
     const { id } = useParams();
+    var selection ;
 
     const Questions =["Name and address of your ministry/church","How many branches do you have?","Total active members on premises?","Active online regular viewers?","How often do you live stream in a week?","What are the challenges you face right now?","What are your goals using our services?","How serious are you to take your online presence to the next level?"];
 
@@ -118,7 +119,7 @@ export default function StandardList() {
                             <option value="2" >2 month</option>
                             <option value="3">3 month</option>
                             <option value="4">4 month </option>
-                            <option value="5">5 month   </option>
+                            <option value="5">5 month  </option>
                             <option value="6">6 month</option>
                             <option value="7">7 month</option>
                             <option value="8">8 month</option>
@@ -234,7 +235,7 @@ export default function StandardList() {
                                                     key={item.id}
                                                     value={item.id}
                                                     className='checkbox'
-                                                    onChange={(e)=> handleChange(e,item.value)}
+                                                    onChange={(e)=> handle(item.value)}
                                                 />&nbsp; {item.value}
                                                 </label> <br></br>
                                                 </>
@@ -289,14 +290,97 @@ export default function StandardList() {
       
 
       lists.map((d,id) => {
-        Items.push(d.value)
+        // Items.push(d.value)
+        var temp ={
+            "question":d.value,
+            "answer":"NULL"
+        }
+
+        QueAns.push(temp);
       })
-      console.log("Items,",JSON.stringify(Items));
+    //   console.log("Items,",JSON.stringify(Items));
       JSON.stringify(Items);
       var months = document.getElementById("months").value;
       // console.log("months",months);
       const member_id =  sessionstorage.getItem("customerId");
       const token = sessionstorage.getItem("token");
+
+
+      Questions.map(q => {
+          
+        if(q === "Name and address of your ministry/church")
+        {
+            var temp1 = {
+                "question" : q,
+                "answer": data.ministry
+            }
+             QueAns.push(temp1)
+        }
+
+        if(q === "How many branches do you have?")
+        {
+            var temp2 = {
+                "question" : q,
+                "answer": data.branches
+            }
+            QueAns.push(temp2)
+        }
+
+        if(q === "Total active members on premises?")
+        {
+            var temp3 = {
+                "question" : q,
+                "answer": data.members
+            }
+            QueAns.push(temp3)
+        }
+    
+        if(q === "Active online regular viewers?")
+        {
+            var temp4 = {
+                "question" : q,
+                "answer": data.viewers
+            }
+            QueAns.push(temp4)
+        }
+
+        if(q === "How often do you live stream in a week?")
+        {
+            var temp5 = {
+                "question" : q,
+                "answer": data.liveStream
+            }
+           QueAns.push(temp5)
+        }
+
+        if(q === "What are the challenges you face right now?")
+        {
+            var temp6 = {
+                "question" : q,
+                "answer": data.challenges
+            }
+            QueAns.push(temp6)
+        }
+
+        if(q === "What are your goals using our services?")
+        {
+            var temp7 = {
+                "question" : q,
+                "answer": Items_1
+            }
+            QueAns.push(temp7)
+        }
+
+        if(q === "How serious are you to take your online presence to the next level?")
+        {
+            var temp8 = {
+                "question" : q,
+                "answer": data.online_presence
+            }
+             QueAns.push(temp8)
+        }
+
+  })
       
   
       var data1 = new FormData();
@@ -305,169 +389,117 @@ export default function StandardList() {
       data1.append("package_type",'STD');
       data1.append("package_cost",0);
       data1.append("months",months);
-      data1.append('package_services',JSON.stringify(Items))
+    //   data1.append('package_services',JSON.stringify(Items))
     
       // for (var value of data.values()) {
       //     console.log(value); 
       // }  
       
+         
       const headers ={
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}`
-        }
-  
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      }
+
+    
+    axios({
+        method: 'post',
+        url: Url+'Package',
+        data: data1,
+        headers: headers
+        })
+        .then(function (response) {
+            //handle success
+            // console.log(response);
+            // setPkgId(response.data.id);
+            let pkg_id = response.data.id;
+            // if(response.data.message === "package stored Successfully")
+            // {
+            //   toast.success('Order Request has been send !!',{
+            //     autoClose:3000
+            //   });
+            //   setTimeout(() => history.push('/home'), 3000);
+            // }
+
+            var formdata = new FormData();
+      // console.log()
+
+          formdata.append("package_id",pkg_id);
+          formdata.append("package_services",JSON.stringify(QueAns));
+          
+            console.log(JSON.stringify(QueAns));
+        
+          
+          
       
-      axios({
-          method: 'post',
-          url: Url+'Package',
-          data: data1,
-          headers: headers
-          })
-          .then(function (response) {
-              //handle success
-              console.log(response.data);
-              setPkgId(response.data.id)
-          })
-          .catch(function (response) {
-              //handle error
-              console.log(response);
-          });
+          
+          axios({
+              method: 'post',
+              url: Url+'packagespec',
+              data: formdata,
+              headers: headers
+              })
+              .then(function (response) {
+                  //handle success
+                  console.log("response - STD",response);
+                  if(response.status === 201)
+                  {
+                      
+                      // history.push('/home');
+                      toast.success("Order Request has been send !!",{
+                          position:'top-right',
+                          autoClose:3000,
+                          closeOnClick:true
+                      });
+  
+                      setTimeout(() => history.push('/home'), 3000);
+                  }
+              })
+              .catch(function (response) {
+                  //handle error
+                  console.log(response);
+              });
+  
+
+        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
+        });
+
 
       
       
     //   console.log(data);
       
-      Questions.map(q => {
-          
-            if(q === "Name and address of your ministry/church")
-            {
-                var temp1 = {
-                    "question" : q,
-                    "answer": data.ministry
-                }
-                 QueAns.push(temp1)
-            }
 
-            if(q === "How many branches do you have?")
-            {
-                var temp2 = {
-                    "question" : q,
-                    "answer": data.branches
-                }
-                QueAns.push(temp2)
-            }
-
-            if(q === "Total active members on premises?")
-            {
-                var temp3 = {
-                    "question" : q,
-                    "answer": data.members
-                }
-                QueAns.push(temp3)
-            }
-        
-            if(q === "Active online regular viewers?")
-            {
-                var temp4 = {
-                    "question" : q,
-                    "answer": data.viewers
-                }
-                QueAns.push(temp4)
-            }
-
-            if(q === "How often do you live stream in a week?")
-            {
-                var temp5 = {
-                    "question" : q,
-                    "answer": data.liveStream
-                }
-               QueAns.push(temp5)
-            }
-
-            if(q === "What are the challenges you face right now?")
-            {
-                var temp6 = {
-                    "question" : q,
-                    "answer": data.challenges
-                }
-                QueAns.push(temp6)
-            }
-
-            if(q === "What are your goals using our services?")
-            {
-                var temp7 = {
-                    "question" : q,
-                    "answer": Items
-                }
-                QueAns.push(temp7)
-            }
-
-            if(q === "How serious are you to take your online presence to the next level?")
-            {
-                var temp8 = {
-                    "question" : q,
-                    "answer": data.online_presence
-                }
-                 QueAns.push(temp8)
-            }
-
-      })
 
     
-        var formdata = new FormData();
-        // console.log()
-
-        formdata.append("package_id",pkg_id);
-        formdata.append("package_services",JSON.stringify(QueAns));
         
-      
-      
-        
-        
-    
-        
-        axios({
-            method: 'post',
-            url: Url+'packagespec',
-            data: formdata,
-            headers: headers
-            })
-            .then(function (response) {
-                //handle success
-                console.log("response",response.status);
-                if(response.status === 201)
-                {
-                    
-                    // history.push('/home');
-                    toast.success("Order Request has been send !!",{
-                        position:'top-right',
-                        autoClose:3000,
-                        closeOnClick:true
-                    });
-
-                    setTimeout(() => history.push('/home'), 3000);
-                }
-            })
-            .catch(function (response) {
-                //handle error
-                console.log(response);
-            });
-
   }
 
   
 
-    function handleChange(event,item1) 
+    // function handleChange(event,item1) 
+    // {
+      
+    //   var value = item1;
+      
+    //   var temp = {
+    //     "question":value,
+    //     "answer":"NULL"
+    //   }
+
+    //   Items_1.push(temp);
+
+    // }
+
+
+    function handle(item)
     {
-      
-      var value = item1;
-      
-      var temp = {
-        "name":value
-      }
-
-      Items_1.push(temp);
-
+      selection = item +", "+ selection;
+      console.log("selection :",selection);
+      setItems_1(selection);
     }
 
 

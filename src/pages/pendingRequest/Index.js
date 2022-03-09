@@ -330,8 +330,7 @@ export default function Index() {
         const headers ={
             'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${token}`,
-            'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Methods': 'POST'
+            
         }
 
         console.log("cost",cost === undefined?0:cost)

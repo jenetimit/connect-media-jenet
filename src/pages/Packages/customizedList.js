@@ -19,10 +19,11 @@ export default function CustomizedList() {
      const { register, handleSubmit } = useForm({ shouldUseNativeValidation: true });
     const [Items_1,setItems_1] =  React.useState([]);
     const [QueAns] = React.useState([]);
-    const [pkg_id,setPkgId] = React.useState(0);
+    // const [pkg_id,setPkgId] = React.useState();
    
      const [Items,setItems] =  React.useState([]);
 
+     var selection ;
 
      const Questions =["Name and address of your ministry/church","How many branches do you have?","Total active members on premises?","Active online regular viewers?","How often do you live stream in a week?","What are the challenges you face right now?","What are your goals using our services?","How serious are you to take your online presence to the next level?"];
 
@@ -283,7 +284,7 @@ export default function CustomizedList() {
                                                     key={item.id}
                                                     value={item.id}
                                                     className='checkbox'
-                                                    onChange={(e)=> handleChange(e,item.value)}
+                                                    onChange={(e)=> handle(item.value)}
                                                 />&nbsp; {item.value}
                                                 </label> <br></br>
                                                 </>
@@ -346,23 +347,117 @@ export default function CustomizedList() {
     );
 
 
+    function handle(item)
+    {
+      selection = item +", "+ selection;
+      console.log("selection :",selection);
+      setItems_1(selection);
+    }
+
+
 
     function handleChange(event,item1) 
     {
-      var id = event.target.value;
+      // var id = event.target.value;
       var value = item1;
       
       var temp = {
-        "name":value
+        "question" : value,
+        "answer": "NULL"
       }
+     
 
-      Items.push(temp);
+      // setItems(temp);
+      QueAns.push(temp);
+      // console.log(temp)
 
     }
 
 
     function onSubmit(data)
     {
+
+
+              Questions.map(q => {
+                  
+                if(q === "Name and address of your ministry/church")
+                {
+                    var temp1 = {
+                        "question" : q,
+                        "answer": data.ministry
+                    }
+                    QueAns.push(temp1)
+                }
+
+                if(q === "How many branches do you have?")
+                {
+                    var temp2 = {
+                        "question" : q,
+                        "answer": data.branches
+                    }
+                    QueAns.push(temp2)
+                }
+
+                if(q === "Total active members on premises?")
+                {
+                    var temp3 = {
+                        "question" : q,
+                        "answer": data.members
+                    }
+                    QueAns.push(temp3)
+                }
+            
+                if(q === "Active online regular viewers?")
+                {
+                    var temp4 = {
+                        "question" : q,
+                        "answer": data.viewers
+                    }
+                    QueAns.push(temp4)
+                }
+
+                if(q === "How often do you live stream in a week?")
+                {
+                    var temp5 = {
+                        "question" : q,
+                        "answer": data.liveStream
+                    }
+                  QueAns.push(temp5)
+                }
+
+                if(q === "What are the challenges you face right now?")
+                {
+                    var temp6 = {
+                        "question" : q,
+                        "answer": data.challenges
+                    }
+                    QueAns.push(temp6)
+                }
+
+                if(q === "What are your goals using our services?")
+                {
+                    var temp7 = {
+                        "question" : q,
+                        "answer": Items_1
+                    }
+                    QueAns.push(temp7)
+                }
+
+                if(q === "How serious are you to take your online presence to the next level?")
+                {
+                    var temp8 = {
+                        "question" : q,
+                        "answer": data.online_presence
+                    }
+                    QueAns.push(temp8)
+                    // QueAns.push(Items)
+                }
+
+          })
+
+          console.log("quesans",JSON.stringify(QueAns));
+        
+
         console.log("Items,",JSON.stringify(Items));
         JSON.stringify(Items);
         var months = document.getElementById("months").value;
@@ -377,7 +472,7 @@ export default function CustomizedList() {
         data1.append("package_type",'CUST');
         data1.append("package_cost",1);
         data1.append("months",months);
-        data1.append('package_services',JSON.stringify(Items));
+        // data1.append('package_services',JSON.stringify(Items));
       
       
         
@@ -395,140 +490,62 @@ export default function CustomizedList() {
             })
             .then(function (response) {
                 //handle success
-                console.log(response.data);
-                setPkgId(response.data.id);
+                console.log(response);
+                // setPkgId(response.data.id);
+                let pkg_id = response.data.id;
                 // if(response.data.message === "package stored Successfully")
                 // {
                 //   toast.success('Order Request has been send !!',{
                 //     autoClose:3000
                 //   });
-                //   setTimeout(() => history.push('/home'), 3000);
+                //   setTimeou console.log("quesans",JSON.stringify(QueAns));t(() => history.push('/home'), 3000);
                 // }
+
+                var formdata = new FormData();
+          // console.log()
+  
+              formdata.append("package_id",pkg_id);
+              formdata.append("package_services",JSON.stringify(QueAns));
+              
+               
+            
+              
+              
+          
+              
+              axios({
+                  method: 'post',
+                  url: Url+'packagespec',
+                  data: formdata,
+                  headers: headers
+                  })
+                  .then(function (response) {
+                      //handle success
+                      console.log("response - cust",response);
+                      if(response.status === 201)
+                      {
+                          
+                          // history.push('/home');
+                          toast.success("Order Request has been send !!",{
+                              position:'top-right',
+                              autoClose:3000,
+                              closeOnClick:true
+                          });
+      
+                          setTimeout(() => history.push('/home'), 3000);
+                      }
+                  })
+                  .catch(function (response) {
+                      //handle error
+                      console.log(response);
+                  });
+      
+
             })
             .catch(function (response) {
                 //handle error
                 console.log(response);
             });
-
-
-
-            Questions.map(q => {
-          
-              if(q === "Name and address of your ministry/church")
-              {
-                  var temp1 = {
-                      "question" : q,
-                      "answer": data.ministry
-                  }
-                   QueAns.push(temp1)
-              }
-  
-              if(q === "How many branches do you have?")
-              {
-                  var temp2 = {
-                      "question" : q,
-                      "answer": data.branches
-                  }
-                  QueAns.push(temp2)
-              }
-  
-              if(q === "Total active members on premises?")
-              {
-                  var temp3 = {
-                      "question" : q,
-                      "answer": data.members
-                  }
-                  QueAns.push(temp3)
-              }
-          
-              if(q === "Active online regular viewers?")
-              {
-                  var temp4 = {
-                      "question" : q,
-                      "answer": data.viewers
-                  }
-                  QueAns.push(temp4)
-              }
-  
-              if(q === "How often do you live stream in a week?")
-              {
-                  var temp5 = {
-                      "question" : q,
-                      "answer": data.liveStream
-                  }
-                 QueAns.push(temp5)
-              }
-  
-              if(q === "What are the challenges you face right now?")
-              {
-                  var temp6 = {
-                      "question" : q,
-                      "answer": data.challenges
-                  }
-                  QueAns.push(temp6)
-              }
-  
-              if(q === "What are your goals using our services?")
-              {
-                  var temp7 = {
-                      "question" : q,
-                      "answer": Items
-                  }
-                  QueAns.push(temp7)
-              }
-  
-              if(q === "How serious are you to take your online presence to the next level?")
-              {
-                  var temp8 = {
-                      "question" : q,
-                      "answer": data.online_presence
-                  }
-                   QueAns.push(temp8)
-              }
-  
-        })
-  
-      
-          var formdata = new FormData();
-          // console.log()
-  
-          formdata.append("package_id",pkg_id);
-          formdata.append("package_services",JSON.stringify(QueAns));
-          
-        
-        
-          
-          
-      
-          
-          axios({
-              method: 'post',
-              url: Url+'packagespec',
-              data: formdata,
-              headers: headers
-              })
-              .then(function (response) {
-                  //handle success
-                  console.log("response",response.status);
-                  if(response.status === 201)
-                  {
-                      
-                      // history.push('/home');
-                      toast.success("Order Request has been send !!",{
-                          position:'top-right',
-                          autoClose:3000,
-                          closeOnClick:true
-                      });
-  
-                      setTimeout(() => history.push('/home'), 3000);
-                  }
-              })
-              .catch(function (response) {
-                  //handle error
-                  console.log(response);
-              });
-  
-
 
 
     }
