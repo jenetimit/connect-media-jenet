@@ -204,7 +204,7 @@ export default function Index() {
                                         {/* <Button variant="dark" onClick={()=>sent()}>Enquiry</Button>  */}
                                         {type === "event" ? (
                                             <>
-                                            <Button variant="dark" onClick={()=>accept(eventList.event_costtype)}>Accept</Button> 
+                                            <Button variant="dark" onClick={()=>accept(eventList.event_costtype,type)}>Accept</Button> 
 
                                             <Button variant="dark" onClick={()=>reject(eventList.event_cost,type)}>Reject</Button>
                                             </>
@@ -324,7 +324,7 @@ export default function Index() {
     {
         
 
-        
+        console.log("va",value)
         const token = sessionstorage.getItem("token");
 
         const headers ={
@@ -336,7 +336,7 @@ export default function Index() {
         console.log("cost",cost === undefined?0:cost)
         var data = new FormData();
 
-        if(value==="event")
+        if(value === "event")
         {
             data.append("event_id",id);
             data.append("customer_id",c_id);
