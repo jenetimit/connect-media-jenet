@@ -16,7 +16,7 @@ export default function Index() {
 
     let history = useHistory();
     const {id,type} = useParams();
-    const [modelmsg,setmodelmsg] = React.useState(false);
+    const [paybtn,setPayBtn] = React.useState(false);
     const [eventList,setEventList] = React.useState({});
     const [campList,setCampList] = React.useState({});
     const [pkgList,setpkgList] = React.useState([]);
@@ -201,14 +201,20 @@ export default function Index() {
                                    
 
                                     <div className='space-between'>
-                                        {/* <Button variant="dark" onClick={()=>sent()}>Enquiry</Button>  */}
-                                        {type === "event" ? (
-                                            <>
-                                            <Button variant="dark" onClick={()=>accept(eventList.event_costtype,type)}>Accept</Button> 
+                                       
+                                       {paybtn ? (<> 
+                                                    <Button variant="dark" onClick={()=>paynow(eventList.event_costtype)}>pay Now</Button> 
+                                                </>):
+                                       (
+                                           <>
+                                           <Button variant="dark" onClick={()=>accept(eventList.event_costtype,type)}>Accept</Button> 
 
                                             <Button variant="dark" onClick={()=>reject(eventList.event_cost,type)}>Reject</Button>
-                                            </>
-                                        ):''}
+
+                                           </>
+                                       )}
+                                            
+                                       
                                         
                                     </div>
                                     
@@ -252,9 +258,17 @@ export default function Index() {
                                         <p className='bold-text'>Cost : {pkgData.packages_cost}</p>
 
                                     <div className='space-between'>
-                                        {/* <Button variant="dark" onClick={()=>sent()}>Enquiry</Button> &nbsp;&nbsp; */}
-                                        <Button variant="dark" onClick={()=>accept(pkgData.packages_cost,type)}>Accept</Button>&nbsp; &nbsp;
+                                   
+                                        {paybtn ? (<> 
+                                                    <Button variant="dark" onClick={()=>paynow(pkgData.packages_cost)}>pay Now</Button> 
+                                                </>):
+                                       (
+                                           <>
+                                        <Button variant="dark" onClick={()=>accept(pkgData.packages_cost,type)}>Accept</Button>
                                         <Button variant="dark" onClick={()=>reject(pkgData.packages_cost,type)}>Reject</Button>
+
+                                        </>
+                                       )}
                                     </div>
 
                                         </Card.Body>
@@ -267,31 +281,7 @@ export default function Index() {
                            
                         </Card>
 
-                        {
-                        modelmsg &&
-
-                        <Modal.Dialog className='modal-msg'>
-                            <Modal.Header >
-                                <Modal.Title style={{color:'black'}}>Sent </Modal.Title>
-                              
-                                {/* {title==="replay"?"Replay To Messages" :" Sent Message"} */}
-                            </Modal.Header>
-
-                            <Modal.Body>
-                                <input type="text" placeholder='type here ..' id="message" className='msg-text' />
-                            </Modal.Body>
-
-                            <Modal.Footer>
-
-                                
-                                <Button variant="secondary" onClick={closebtn}>Close</Button>
-                                
-                                {/* <Button variant="dark" onClick={()=>sentmessage()}>sent</Button> */}
-                                
-                                
-                            </Modal.Footer>
-                        </Modal.Dialog>
-                    }
+                        
                         
                     </div>
              
@@ -314,11 +304,6 @@ export default function Index() {
 //         setmodelmsg(!modelmsg);
 //     }
 
-
-    function closebtn()
-    {
-        setmodelmsg(false)
-    }
 
     function accept(cost,value)
     {
@@ -352,14 +337,16 @@ export default function Index() {
                 .then(function (response) {
                     //handle success
                     console.log("response",response); 
-                    toast.success('Order Created !!',{autoClose:3000});
+                    setPayBtn(true);
                     
                     
                 })
                 .catch(function (response) {
                     //handle error
                     console.log(response);
-                    toast.success('Order Created !!',{autoClose:3000});
+                    // toast.success('Order Created !!',{autoClose:3000});
+                    // setTimeout(() => history.push('/orders'),3000);
+                    setPayBtn(true);
                 });
     
         }
@@ -380,12 +367,12 @@ export default function Index() {
                 .then(function (response) {
                     //handle success
                     console.log("response",response); 
-                    toast.success('Order Created !!',{autoClose:3000})
+                    setPayBtn(true);
                 })
                 .catch(function (response) {
                     //handle error
                     console.log(response);
-                    toast.success('Order Created !!',{autoClose:3000})
+                    setPayBtn(true);
                 });
             
         }
@@ -427,11 +414,13 @@ export default function Index() {
                     //handle success
                     console.log("response",response); 
                     toast.success('order Rejected !!',{autoClose:3000})
+                    setTimeout(() => history.push('/home'),3000);
                 })
                 .catch(function (response) {
                     //handle error
                     console.log(response);
                     toast.success('order Rejected !!',{autoClose:3000})
+                    setTimeout(() => history.push('/home'),3000);
                 });
 
         }
@@ -453,11 +442,13 @@ export default function Index() {
                     //handle success
                     console.log("response",response); 
                     toast.success('order Rejected !!',{autoClose:3000})
+                    setTimeout(() => history.push('/home'),3000);
                 })
                 .catch(function (response) {
                     //handle error
                     console.log(response);
                     toast.success('order Rejected !!',{autoClose:3000})
+                    setTimeout(() => history.push('/home'),3000);
                 });
         }
        
@@ -465,5 +456,12 @@ export default function Index() {
         
 
         
+    }
+
+    function paynow(cost)
+    {
+        
+        toast.success('Order Created !!',{autoClose:3000});
+        setTimeout(() => history.push('/orders'),3000);     
     }
 }

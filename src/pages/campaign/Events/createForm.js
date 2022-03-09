@@ -154,44 +154,6 @@ export default function CreateForm() {
      </div>
  )
 
- function paynow()
- {
-    console.log("id",eventId);
-    const customer_id =  sessionstorage.getItem("customerId");
-    const token = sessionstorage.getItem("token");
-
-    var formdata = new FormData();
-
-
-
-    formdata.append("customer_id",customer_id);
-    formdata.append("event_id",eventId);
-    formdata.append("order_item","Event");
-    formdata.append("order_amt",0);
-
-    const headers ={
-        'Content-Type': 'multipart/form-data',
-        'Authorization': `Bearer ${token}`
-      }
-
-    
-    axios({
-        method: 'post',
-        url: Url+'Event_order',
-        data: formdata,
-        headers: headers
-        })
-        .then(function (response) {
-            //handle success
-            console.log(response.data);
-            
-        })
-        .catch(function (response) {
-            //handle error
-            console.log(response);
-        });
-        
-
- }
+ 
 
 }
