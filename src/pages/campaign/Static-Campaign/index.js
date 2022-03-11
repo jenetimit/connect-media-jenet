@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import { Url } from '../../../GLOBAL/global';
+import { Url,notImage } from '../../../GLOBAL/global';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { Container,Row,Col } from 'react-bootstrap';
@@ -56,7 +56,7 @@ export default function Index() {
      
             <section className='sectionstyling'>
                 <div className='Mposts' style={{backgroundColor:'azure'}}>
-                <img src={'http://connectmedia.gitdr.com/public/'+post.photo} alt='million' width={700} height={500} style={{objectFit:'contain'}}/>
+                <img src={post.photo === (undefined || null) ? notImage :'http://connectmedia.gitdr.com/public/'+post.photo} alt='million' width={700} height={500} style={{objectFit:'contain'}}/>
                     <div className='column-mpost'>
                     <div className='content-mpost'>
                         <h2 style={{color: '#000',padding: 10}} className='para-content'>{post.camp_title}&nbsp; :</h2>

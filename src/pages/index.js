@@ -41,6 +41,7 @@ import Faq from '../../src/pages/faq/index';
 import PendingReq from '../../src/pages/pendingRequest/pendingRequest'
 import Forgotpwd from '../../src/pages/forgotPassword/Index'
 import Forgotpwd1 from '../../src/pages/forgotPassword/forgot1'
+import EachRequest from '../../src/pages/pendingRequest/EachRequest'
 
 import {
     BrowserRouter as Router,
@@ -184,6 +185,21 @@ export default function Index() {
                     <Orders  />
 
                 </Route>
+
+                <Route exact path='/pending_req/:id'>
+
+                    <EachRequest/>
+
+                </Route>
+
+
+                <Route exact path='/pending_req'>
+
+                    <EachRequest data={data.data}/>
+
+                </Route>
+
+                
 
                 
                 <Route exact path='/request/:type/:id'>

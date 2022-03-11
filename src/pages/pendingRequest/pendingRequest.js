@@ -3,6 +3,7 @@ import { Url } from '../../GLOBAL/global';
 import { Container,Row,Col,Table,Button } from 'react-bootstrap';
 import axios from 'axios';
 import '../../style/messages.scss';
+import '../../style/order.scss';
 import { useHistory} from "react-router-dom";
 import dateFormat from 'dateformat';
 import Parallax from 'react-rellax'
@@ -21,12 +22,10 @@ export default function Index() {
     const [packages,setPackages] = React.useState(false);
 
     const [pend_event,setPend_event] = React.useState([]);
-    const [pend_pack,setPend_pack] = React.useState({});
-    const [pend_pkg_len,setPkgLen] = React.useState(0);
-    const [result] = React.useState([]);
-
+    const [pend_pack,setPend_pack] = React.useState([{}]);
+   
     const [process_event,setProcess_event] = React.useState([]);
-    const [process_pack,setProcess_pack] = React.useState([]);
+    const [process_pack,setProcess_pack] = React.useState({});
 
     const [pkgData] = React.useState([]);
     const [campData] = React.useState([]);
@@ -51,7 +50,7 @@ export default function Index() {
                 // If request is good...
                 
                 
-                // console.log("pending pack",response.data.pack);    
+                console.log("pending",response.data.event);    
                 setPend_event(response.data.event);
                 setPend_pack(response.data.pack);
 
@@ -70,20 +69,21 @@ export default function Index() {
             });
 
 
-            // axios.get(Url+'processingrequest', { headers: { Authorization: `Bearer ${token}` } ,params:{customer_id: customer_id} })
-            // .then(response => {
-            //     // If request is good...
+            axios.get(Url+'processingrequest', { headers: { Authorization: `Bearer ${token}` } ,params:{customer_id: customer_id} })
+            .then(response => {
+                // If request is good...
                 
-            //     setProcess_event(response.data.event);
-            //     setProcess_pack(response.data.pack);
-            //     // console.log("processing",response.data); 
+                // console.log("processing",response.data)
+                setProcess_event(response.data.event);
+                setProcess_pack(response.data.pack);
+                console.log("processing",response.data.event);   
                 
                
                
-            // })
-            // .catch((error) => {
-            //     console.log('error ' + error);
-            // });
+            })
+            .catch((error) => {
+                console.log('error ' + error);
+            });
 
 
 
@@ -101,7 +101,7 @@ export default function Index() {
 
     <Container className='py-5 '>
 
-      <h2 className='text-center my-5'>Pending Requests</h2>
+      <h2 className='text-center my-5'>Pending/Processing Requests</h2>
         <Row className='py-5'>
             
 
@@ -130,7 +130,7 @@ export default function Index() {
                         <Table striped bordered hover style={{backgroundColor:'azure'}} className="text-center">
                             <thead>
                                 <tr>
-                                    <td>Item Id</td>
+                                    {/* <td>Item Id</td> */}
                                     <th>Ordered Date</th>
                                     <th>Title</th>
                                     <th>From - To Date</th>
@@ -143,40 +143,64 @@ export default function Index() {
                             </thead>
 
                             <tbody>
-
-                           
-                              {/* {console.log(orders.splice(0,1))} */}
-                                {/* {console.log(orders.length)} */}
                               
-                              { pend_event.length === 0 ? <p className='text-center'>no orders</p> :
-                                pend_event.map((data, idx) => (
-                             
-                                // console.log()
-                            
-                                <tr key={idx}>
-                                    <td>{data.event_id}</td>
-                                    <td>{data.created_at !== null? dateFormat(data.created_at, "mmmm dS, yyyy"):""}</td>
-                                    <td>{data.event_title}</td>
+                           
+                           {pend_event === "No events available" ? <p className='text-center green bold-text-600 my-3'>No Events under Pending</p> :
+                           (
+
+                            pend_event.map((data, idx) => (
                                  
-                                    <td>{ dateFormat(data.event_from , "mmmm dS, yyyy")}{' - '} {dateFormat(data.event_to , "mmmm dS, yyyy")} </td>
+                            
+                              <tr key={idx}>
+                                  {/* <td>{data.event_id}</td> */}
+                                  <td>{data.created_at !== null? dateFormat(data.created_at, "mmmm dS, yyyy"):""}</td>
+                                  <td>{data.event_title}</td>
+                               
+                                  <td>{ dateFormat(data.event_from , "mmmm dS, yyyy")}{' - '} {dateFormat(data.event_to , "mmmm dS, yyyy")} </td>
+
+                                 
+
+                                  <td>{data.event_cost}</td>
+                                  <td className='error'> {data.event_status} </td>
+                                 
+                                 
+                              </tr>  
+                                 
+                              ))
+                           )}
+                            
+                            
+                                
+                                
+                              
+
+
+
+
+
+                              { process_event === "No events available" ? <p className='text-center green bold-text-600 my-3 '>No Events under processing</p> :
+
+                              (
+                                <>
+                            
+                                <tr >
+                                    {/* <td>{process_event[0].event_id}</td> */}
+                                    <td>{process_event[0].created_at !== null? dateFormat(process_event[0].created_at, "mmmm dS, yyyy"):""}</td>
+                                    <td>{process_event[0].event_title}</td>
+                                 
+                                    <td>{ dateFormat(process_event[0].event_from , "mmmm dS, yyyy")}{' - '} {dateFormat(process_event[0].event_to , "mmmm dS, yyyy")} </td>
 
                                    
 
-                                    <td>{data.event_cost}</td>
-                                    <td>{data.event_status}</td>
+                                    <td>{process_event[0].event_cost}</td>
+                                    <td className='warning'>{process_event[0].event_status}</td>
                                    
-                                    {/* <td>
-                                        
-                                        <Button variant="dark" onClick={()=>{view(data,"event")}}>view</Button><br></br>
                                     
-                                    
-                                    </td> */}
                                 </tr>  
+                                </>
+                              )}
                                
                               
-                                   
-                                )) }
-
 
                                 
     
@@ -192,22 +216,28 @@ export default function Index() {
 
 
                   {packages &&
+                   
                         <Table striped bordered hover style={{backgroundColor:'azure'}} className="text-center col-gap">
                             <thead>
                                 <tr >
                                     <th >Ordered Date</th>
-                                    <th>Package Details
+                                    <th > Sel.Months</th>
+                                    <th>Pkg. Specifications</th>
+
+
+                                    {/* <th>Questionaire
                                       
                                     <tr className='p1pkg p1pkg-heading'>
-                                      <th className='mr-left'>No:</th>
-                                      <th className='mr-left'>Type</th>
-                                      <th className='mr-left'>Months</th>
+                                      <th className='mr-left'>Question</th>
+                                      <th className='mr-left'>Answer</th>
+                                    
                                      
                                     
                                   </tr>
-                                    </th>
+                                    </th> */}
+
                                     <th >Type of PKG</th>
-                                    {/* <th >Drive Id</th> */}
+                                   
                                     <th >Cost</th>
                                     <th >Status</th>
                                    
@@ -217,71 +247,92 @@ export default function Index() {
                             </thead>
 
                             <tbody>
-                            {/* {console.log("hello",Object.keys(pend_pack).length)}
-                            {setPkgLen(Object.keys(pend_pack).length)} */}
-                       
 
-                            {Object.keys(pend_pack).map((data,id) =>(
-                               pend_pack[data].map((d,id)=>(
-                                <tr key={id}>
-                                    <td>{d.created_at !== null? dateFormat(data.created_at, "mmmm dS, yyyy"):""}</td>
-                                    <td>
-                                        <div className='p1pkg '>
-                                            <p>{d.pspec_text}</p>
-                                            <p>{d.pspec_ans}</p>
-                                            <p>{d.months}</p>
+
+                            {pend_pack === "No packages Available" ? <p className='text-center green bold-text-600 my-3'>No Package under Pending</p> :
+                           (
+
+                            Object.keys(pend_pack).map((data,id) =>(
+
+                              
+                              <>
+
+                              <tr>
+                              
+                              <td>{dateFormat(pend_pack[data].pack.created_at, "mmmm dS, yyyy")}</td>
+                              <td>{pend_pack[data].pack.months}</td>
+
+
+                                    {pend_pack[data].spec.map((t,id) =>(
+                                      <>
+                                        <div style={{display:'flex',flexDirection:'column'}}>
+                                          <td>{t.pspec_text}</td>
                                         </div>
                                         
-                                
-                                    </td>
-                                
-                                    <td>{d.packages_type}</td>
-                                
-
-                                    <td>{d.packages_cost}</td>
-                                    <td>{d.packages_status}</td>
-                                
-                                    {/* <td>
-                                    
-                                        <Button variant="dark" onClick={()=>{view(data,"pkg")}}>view</Button><br></br>
-                                
-                                
-                                    </td> */}
-                                </tr>  
-                               ))
-                               
-                            ))}
-                        
-                                {/* { result.length === 0 ? <p className='text-center'>no orders</p> :(
-                                    result.map((data, idx) => (
-                              
-                                //   console.log("pkgdata inside",data[idx+1])
-                                
-                                 <tr key={idx}>
-                                     <td>{data.created_at !== null? dateFormat(data.created_at, "mmmm dS, yyyy"):""}</td>
-                                     <td>
-                                   
-                                  
-                                     </td>
-                                   
-                                       <td>{data.packages_type}</td>
-                                    
-
-                                     <td>{data.packages_cost}</td>
-                                     <td>{data.packages_status}</td>
-                                   
-                                     <td>
                                         
-                                         <Button variant="dark" onClick={()=>{view(data,"pkg")}}>view</Button><br></br>
-                                    
-                                    
-                                     </td>
-                                 </tr>  
-                              
-                                )) )} */}
-                     
-    
-                                 
+                                      </>
+                                      
+                                    ))}
+
+                                   
+
+                              <td>{pend_pack[data].pack.packages_type}</td>
+                              <td>{pend_pack[data].pack.packages_cost}</td>
+                              <td className='error'>{pend_pack[data].pack.packages_status}</td>     
+                              <td> <Button variant="dark" onClick={()=>
+                                // {view_pkg(pend_pack[data].pack.packages_id,"pkg")}
+                                {view_pkg(pend_pack[data])}
+                                }>view</Button></td>   
+                              </tr>
+
+                              </>
+                            ))
+
+
+                           ) }
+
+                                    {process_pack === "No packages Available" ? <p className='text-center green bold-text-600 my-3'>No Package under processing</p> :
+                                    (
+
+                                      Object.keys(process_pack).map((data,id) =>(
+
+                                                              
+                                        <>
+          
+                                        <tr>
+          
+                                        <td>{dateFormat(process_pack[data].pack.created_at, "mmmm dS, yyyy")}</td>
+                                        <td>{process_pack[data].pack.months}</td>
+          
+          
+                                              {process_pack[data].spec.map((t,id) =>(
+                                                <>
+                                                  <div style={{display:'flex',flexDirection:'column'}}>
+                                                    <td>{t.pspec_text}</td>
+                                                  </div>
+                                                  
+                                                  
+                                                </>
+                                                
+                                              ))}
+          
+                                            
+          
+                                        <td>{process_pack[data].pack.packages_type}</td>
+                                        <td>{process_pack[data].pack.packages_cost}</td>
+                                        <td className='error'>{process_pack[data].pack.packages_status}</td>     
+                                        <td> <Button variant="dark" onClick={()=>
+                                          // {view_pkg(pend_pack[data].pack.packages_id,"pkg")}
+                                          {view_pkg(process_pack[data])}
+                                          }>view</Button></td>   
+                                        </tr>
+          
+                                        </>
+                                      ))
+          
+
+                                    )}
+
                             </tbody> 
                             
                         </Table>
@@ -305,10 +356,17 @@ export default function Index() {
   function view(data,value)
   {
       
-    
-    //   setOrderId(orderId)
     history.push( { pathname: '/order-view',order:data,type:value})
-      
+    // history.go(0)
+  }
+
+  function view_pkg(pkg_id,type)
+  {
+    console.log("view_pkg",pkg_id)
+    // console.log('/pending_req/'+pkg_id);
+    // history.push('/pending_req/'+pkg_id);
+    history.push({pathname:'/pending_req',data:pkg_id});
+    // history.go(0)
   }
 
   function events()

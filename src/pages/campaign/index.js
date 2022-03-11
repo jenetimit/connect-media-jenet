@@ -90,7 +90,7 @@ export default function Campaigns() {
                             <img src={require('../../assets/images/playing.png')} alt="" id="cube-img" />
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                                 has been the industry's standard dummy text ever since the 1500s,</p>
-                                <button onClick={() => history.push('/home')}>Start Here</button>
+                                {/* <button onClick={() => history.push('/home')}>Start Here</button> */}
                             <h1>Youth Section</h1>
                         </div>
                     </div>
@@ -101,7 +101,7 @@ export default function Campaigns() {
                             <img src={require('../../assets/images/israel.png')} alt="" id="sb-two-cube-img_second" />
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                                 has been the industry's standard dummy text ever since the 1500s,</p>
-                                <button onClick={() => history.push('/home')}>Start Here</button>
+                                {/* <button onClick={() => history.push('/home')}>Start Here</button> */}
                             <h1>Pray For Israel</h1>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ export default function Campaigns() {
                             <img src={require('../../assets/images/erth.png')} alt="" id="sb-two-cube-img_third" />
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                                 has been the industry's standard dummy text ever since the 1500s,</p>
-                            <button onClick={() => history.push('/home')}>Start Here</button>
+                            {/* <button onClick={() => history.push('/home')}>Start Here</button> */}
                             <h1>Evangelism</h1>
                         </div>
                     </div>

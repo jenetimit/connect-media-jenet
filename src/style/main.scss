@@ -31,12 +31,16 @@ a
 
 .green
 {
-    color: darkgreen;
+    color: darkgreen !important;
 }
 
 .warning
 {
-    color: #F1C40F;
+    color: #F1C40F !important;
+}
+
+.error{
+    color: red !important
 }
 
 .nav-count
@@ -46,6 +50,11 @@ a
 }
 
 .bold-text
+{
+    font-weight: 800;
+}
+
+.bold-text-600
 {
     font-weight: 600;
 }
@@ -185,6 +194,14 @@ a
     align-items: center;
     justify-content: center;
     // margin-top: 45rem;
+}
+
+.align-start
+{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
 

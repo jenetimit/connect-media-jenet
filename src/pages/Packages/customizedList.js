@@ -349,7 +349,14 @@ export default function CustomizedList() {
 
     function handle(item)
     {
-      selection = item +", "+ selection;
+      if(item === "All of the above")
+      {
+        selection = "In 1 year we want to expand our online reach , We are a new church. We want to make our presence in the current location , We are planting new churches in new locations. We want to attract new members in different areas"
+      }
+      else{
+        selection = item +", "+ selection;
+
+      }
       console.log("selection :",selection);
       setItems_1(selection);
     }

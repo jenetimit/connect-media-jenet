@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import { Container,Row,Col } from 'react-bootstrap';
 import axios from 'axios'
-import { Url ,imgUrl} from '../../../GLOBAL/global';
+import { Url ,notImage} from '../../../GLOBAL/global';
 import '../../../style/Mposts.scss'
 import { useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
@@ -52,42 +52,15 @@ export default function Index() {
       <>
     <div>
     <section className='card-list'>
+        
 
 {Mpost.map((mpost,id) => (
    
  
         <section className='sectionstyling'>
             <div className='Mposts' style={{backgroundColor:'azure'}}>
-                <img src={'http://connectmedia.gitdr.com/public/'+mpost.photo} alt='million' width={700} height={500} style={{objectFit:'contain'}}/>
-                {/* <div className='content-mpost'>
-                    <p style={{color: '#000'}} className='para-content'>{mpost.camp_title}</p>
-                    <p  className='paragrah '>₹ {mpost.camp_cost}</p>
-                    
-                    <div className='spacing'> 
-                        <div className='footer-div ' style={{backgroundColor:'bisque'}}>
-                            <label style={{color: '#000'}}>Number of Months : </label>
-                    </div>
-                    <div>
-                        <select className='' id="months" required={true} >
-                            <option value="1">1 month</option>
-                            <option value="2">2 month</option>
-                            <option value="3">3 month</option>
-                            <option value="4">4 month</option>
-                            <option value="5">5 month</option>
-                            <option value="6">6 month</option>
-                            <option value="7">7 month</option>
-                            <option value="8">8 month</option>
-                            <option value="9">9 month</option>
-                            <option value="10">10 month</option>
-                            <option value="11">11 month</option>
-                            <option value="12">12 month</option>
-                        </select>
-                    </div>
-                    </div>
-
-                        <button className='btnstyle' onClick={(e) => purchaseCamp(e,mpost)}>Purchase</button>
-
-                </div> */}
+                <img src={mpost.photo ===( undefined || null)   ? notImage :'http://connectmedia.gitdr.com/public/'+mpost.photo} alt='million' width={700} height={500} style={{objectFit:'contain'}}/>
+               
                 <div className='column-mpost'>
                 <div className='content-mpost'>
                     <h2 style={{color: '#000',padding: 10}} className='para-content'>{mpost.camp_title}&nbsp; :</h2>
@@ -134,6 +107,7 @@ export default function Index() {
     function purchaseCamp(e,mpost)
     {
         
+        console.log("mpost",mpost)
         var months = document.getElementById("months").value;
         // console.log("months",months);
 

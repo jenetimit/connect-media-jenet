@@ -44,7 +44,7 @@ export default function Index() {
                 // If request is good...
                 
                 setOrders(response.data);
-                console.log("order",response.data);
+                console.log("orders : ",response.data);
                 response.data.map((data, idx) => {
                   
                   if(data.order.order_item ===  "EVENT")
@@ -162,7 +162,7 @@ export default function Index() {
                                  
                                     <td>{ dateFormat(data.plan[0].event_from , "mmmm dS, yyyy")}{' - '} {dateFormat(data.plan[0].event_to , "mmmm dS, yyyy")} </td>
 
-                                    <td><a href={data.order.drive_id}>{data.order.drive_id}</a></td>
+                                    <td><a href={data.order.drive_id} target="_blank" rel="noreferrer">click here</a></td>
 
                                     <td>{data.order.order_amt}</td>
                                     <td>{data.order.order_status}</td>
@@ -206,13 +206,12 @@ export default function Index() {
                             <tbody>
 
                            
-                              {/* {console.log(orders.splice(0,1))} */}
-                                {/* {console.log(orders.length)} */}
+                            
                               
                               { campData.length === 0 ? <p className='text-center'>no orders</p> :
                                 campData.map((data, idx) => (
                              
-                                // console.log(data.plan[0].camp_type)
+                              
                             
                                 <tr key={idx}>
                                     <td>{data.order.created_at !== null? dateFormat(data.order.created_at, "mmmm dS, yyyy"):""}</td>
@@ -220,7 +219,7 @@ export default function Index() {
                                  
                                     <td>{data.order.order_item}  { data.plan[0].camp_type } </td>
 
-                                    <td><a href={data.order.drive_id}>{data.order.drive_id}</a></td>
+                                    <td><a href={data.order.drive_id} target="_blank" rel="noreferrer">click here</a></td>
 
                                     <td>{data.order.order_amt}</td>
                                     <td>{data.order.order_status}</td>
@@ -251,16 +250,16 @@ export default function Index() {
                             <thead>
                                 <tr >
                                     <th >Ordered Date</th>
-                                    <th>Package Details
+                                    {/* <th>Package Details</th> */}
                                       
-                                    <tr className='p1pkg p1pkg-heading'>
+                                    {/* <tr className='p1pkg p1pkg-heading'>
                                       <th className='mr-left'>No:</th>
                                       <th className='mr-left'>Type</th>
                                       <th className='mr-left'>Months</th>
                                      
                                     
                                   </tr>
-                                    </th>
+                                    </th> */}
                                     <th >Type of PKG</th>
                                     <th >Drive Id</th>
                                     <th >Cost</th>
@@ -281,8 +280,8 @@ export default function Index() {
                                 
                                 <tr key={idx}>
                                     <td>{data.order.created_at !== null? dateFormat(data.order.created_at, "mmmm dS, yyyy"):""}</td>
-                                    <td>
-                                      {/* {console.log('type',data.PACKAGE.packages_type)} */}
+                                    {/* <td>
+                                    
                                       {data.PACKAGE_details.length === 0 ? '' : 
                                         data.PACKAGE_details.map((d ,id)=>(
                                           <>
@@ -298,10 +297,10 @@ export default function Index() {
                                             <hr></hr>
                                         </>
                                         ))}
-                                    </td>
+                                    </td> */}
                                    
-                                      <td>{data.PACKAGE.packages_type !== null?data.PACKAGE.packages_type:''}</td>
-                                    <td><a href={data.order.drive_id}>click here</a></td>
+                                    <td>{data.PACKAGE.packages_type !== null?data.PACKAGE.packages_type:''}</td>
+                                    <td><a href={data.order.drive_id} target="_blank" rel="noreferrer">click here</a></td>
 
                                     <td>{data.PACKAGE.packages_cost}</td>
                                     <td>{data.PACKAGE.packages_status === "Success"?(<p className='green bold-text'>Success</p>):(<p className='bold-text warning'>{data.PACKAGE.packages_status}</p>)}</td>

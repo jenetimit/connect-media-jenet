@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container,Row,Col,Card,Button,Modal } from 'react-bootstrap';
 import '../../style/order.scss'
-import { Url } from '../../GLOBAL/global';
+import { Url,notImage } from '../../GLOBAL/global';
 import axios from 'axios';
 import { useHistory,Link} from "react-router-dom";
 import dateFormat from 'dateformat';
@@ -44,18 +44,16 @@ export default function EachOrder(props) {
           }}/>
 
        </Parallax>
+       <h2 className='text-center my-5'>My Orders</h2>
 
-<Container >
+<Container className='center-align'>
 
-        <h2 className='text-center my-5'>My Orders</h2>
+       
         <Row >
-            <Col sm={12} md={2} xl={2} xxl={2}>
-               
-            </Col>
-
-            <Col sm={12} md={8} xl={8} xxl={8}>
+           
+            {/* <Col sm={12} md={8} xl={8} xxl={8}> */}
                 
-                    <div className='view-msg '>
+                    
                       
                       
 
@@ -65,16 +63,16 @@ export default function EachOrder(props) {
                             { _type === "camp" || _type === "event"  ? (
                                 
 
-                                <Card.Body>
+                                <Card.Body >
 
-                                        {console.log("if ",order)}
+                                    
 
-                                    <p>{order.order.order_item} {order.plan[0].camp_type?" -" +order.plan[0].camp_type:""}</p>
-                                    <p>Order Id : {order.order.order_id}</p>
+                                    <p className='bold-text-600'>{order.plan[0].camp_type === "MPOST"?"MILLION POSTS ":"STATIC POSTS"}</p>
+                                  
                                   
                                     <hr></hr>
                                 
-                                   <p>Item : {order.plan[0].camp_type === "MPOST"?"Million Posts":"Static Posts"}</p>
+                              
                                     
                                     <p> Tittle : {order.plan[0].camp_title?order.plan[0].camp_title:order.plan[0].event_title }</p>
                                     
@@ -82,10 +80,10 @@ export default function EachOrder(props) {
 
                                     <p>Cost : {order.order.order_amt}{''}</p>
 
-                                    {/* <img src={photo} alt={order.order.order_id} width={400} height={400}/> */}
+                                    <img src={order.order.photo === undefined || null ?notImage :'http://connectmedia.gitdr.com/public/'+order.order.photo} alt={order.order.order_id} width={400} height={400}/>
                                     
-                                    <Button variant="dark" onClick={()=>sent()}>sent</Button>
-                                 
+                                    <Button variant="dark" className='list-pkg my-3 ' onClick={()=>sent()}>sent</Button>
+                                
                                    
                                 </Card.Body> )
                                     : 
@@ -94,19 +92,17 @@ export default function EachOrder(props) {
                                         <Card.Body>
                                            {/* {console.log("else ",order)} */}
                                           
-                                        <p>{order.order.order_item} {' - '} {order.PACKAGE.packages_type === "STD" ? "STANDRAD PACKAGE":"CUSTOMIZED PACKAGE"}</p>
-                                        <p>Order Id : {order.order.order_id}</p>
+                                        <p className='bold-text-600'>{order.PACKAGE.packages_type === "STD" ? "STANDRAD PACKAGE":"CUSTOMIZED PACKAGE"}</p>
+                                        {/* <p>Order Id : {order.order.order_id}</p> */}
                                     
                                         <hr></hr>
-                                        {order.PACKAGE.packages_type === "STD" ? 
-                                        <div className='list-pkg'>
-                                            <p className='list-pkg-heading'>Question</p>
-                                            <p className='list-pkg-heading'>Answer</p>
-                                        </div>:''}
+
+                                        <p className='heading bold-text py-3'>Specifications</p>
+                                        
 
                                         {order.PACKAGE_details.map((d,id) =>
 
-                                            <div className='list-pkg'>
+                                            <div className=''>
                                                 <p>{d.pspec_text}</p>
                                                 <p>{d.pspec_ans}</p>
 
@@ -115,11 +111,33 @@ export default function EachOrder(props) {
                                         
                                         )}
 
-                                        <p>Package Cost : {order.PACKAGE.packages_cost}</p>
-                                        <p>Selected Months : {order.PACKAGE.months}</p>
-                                        <p>Order Status : {order.PACKAGE.packages_status}</p>
+                                        <p className='heading bold-text py-3'>Questionnaire</p>
 
-                                        {/* <Button variant="dark" onClick={()=>sent()}>sent</Button> */}
+                                        <div className='align-start bold-text'>
+                                            <p>Question</p>
+                                            <p>Answer</p>
+                                        </div>
+
+
+                                        {order.Question.map((d,id) =>
+
+                                        <div className='align-start'>
+                                            <p className='bold-text-600'>{d.pspec_text}</p>
+                                            <p>{d.pspec_ans}</p>
+
+                                        </div>
+
+
+                                        )}
+
+
+                                        <p>Package Cost : <span className='bold-text'>{order.PACKAGE.packages_cost}</span></p>
+                                        <p>Selected Months : <span className='bold-text'>{order.PACKAGE.months}</span></p>
+                                        <p>Drive Id : <a href={order.order.drive_id} target="_blank" rel="noreferrer">click here</a></p>
+                                        <p>Order Status : <span className='bold-text green'>{order.PACKAGE.packages_status}</span></p>
+                                        
+
+                                        <Button variant="dark" className='list-pkg my-3' onClick={()=>sent()}>sent</Button>
                                            
                                         </Card.Body>
                                     )
@@ -157,15 +175,9 @@ export default function EachOrder(props) {
                             </Modal.Footer>
                         </Modal.Dialog>
                     }
-                    </div>
-             
-
-
-
-
-
+                 
                 
-            </Col>
+            {/* </Col> */}
         </Row>
 
         <ToastContainer />
